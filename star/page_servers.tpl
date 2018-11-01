@@ -19,11 +19,19 @@
 							</tr>
 						</thead>
 						<tbody>
+						{literal}
+							<style>
+								.fix_img img{
+									width:16px !important;
+									height:16px !important;
+								}
+							</style>
+						{/literal}
 							{foreach from=$server_list item=server}
 							<tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_{$server.sid}" aria-expanded="{if $smarty.get.s+1==$server.sid}true{else}false{/if}" aria-controls="collapseExample" {if !$IN_SERVERS_PAGE} onclick="{$server.evOnClick}"{/if}>
-							<td height="16" align="center"><img style="width:16px !important;height:16px !important;" src="images/games/{$server.icon}" border="0" /></td>
-							<td height="16" align="center" id="os_{$server.sid}"></td>
-							<td height="16" align="center" id="vac_{$server.sid}"></td>
+							<td height="16" align="center" class="fix_img"><img src="images/games/{$server.icon}" border="0" /></td>
+							<td height="16" align="center" class="fix_img" id="os_{$server.sid}"></td>
+							<td height="16" align="center" class="fix_img" id="vac_{$server.sid}"></td>
 							<td height="16" id="host_{$server.sid}"><i>Querying Server Data...</i></td>
 							<td height="16" id="players_{$server.sid}">N/A</td>
 							<td height="16" id="map_{$server.sid}">N/A</td>
