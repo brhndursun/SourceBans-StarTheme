@@ -14368,6 +14368,9 @@ small,
 .icon-lg {
   font-size: 2.5rem; }
 
+.icon-26px {
+  font-size: 26px; }
+  
 .icon-md {
   font-size: 1.875rem; }
 
@@ -14476,23 +14479,22 @@ pre {
   .grid-margin-xl-0 {
     margin-bottom: 0; } }
 
-.img-lg {
+.img-lg, .img-lg img {
   width: 92px !important;}
 
-.img-md {
+.img-md, .img-md img {
   width: 60px !important; }
 
-.img-sm {
+.img-sm, .img-sm img {
   width: 43px !important; }
 
-.img-xs, .table td img,
-.table th img {
+.img-xs, .img-xs img {
   width: 37px;}
 
-.img-ss {
+.img-ss, .img-ss img {
   width: 26px !important; }
   
-.img-xxs {
+.img-xxs, .img-xxs img {
   width: 16px !important; }
 
 .stretch-card {

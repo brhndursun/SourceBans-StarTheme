@@ -84,7 +84,7 @@
 	{include file='page_servers.tpl'}
 </div>
 <div class="row">
-	<div class="col-lg-12 grid-margin" data-aos="fade-out">
+	<div class="col-lg-12 grid-margin" data-aos="fade-out"  data-aos-delay="150">
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title" style="margin-bottom:0px;">Latest Added Bans</h4>
@@ -92,7 +92,7 @@
 					<code>Total bans:{$total_bans}</code>
 				</p>
 				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-hover">
+					<table class="table table-bordered table-striped table-hover tbl-sm">
 						<thead>
 							<tr>
 								<th width="100px">
@@ -115,11 +115,11 @@
 						<tbody>
 							{foreach from=$players_banned item=player}
 							<tr onclick="{$player.link_url}" style="cursor:pointer;" data-aos="zoom-in">
-								<td class="font-weight-medium">
+								<td class="font-weight-medium text-center">
 									{if $player.icon == "web.png"}
 									<i class="icon-md mdi mdi-earth"></i>
 									{else}
-									<img src="themes/star/images/games/{$player.icon}" class="img-xxs" alt="MOD" title="MOD" />
+									<img src="themes/star/images/games/{$player.icon}" class="img-ss" alt="MOD" title="MOD" />
 									{/if}
 								</td>
 								<td>
@@ -176,7 +176,7 @@
 </div>
 </div>
 <div class="row">
-	<div class="col-lg-6 grid-margin" data-aos="fade-out">
+	<div class="col-lg-6 grid-margin" data-aos="fade-out" data-aos-delay="250">
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title" style="margin-bottom:0px;">Latest Comm Blocks</h4>
@@ -184,7 +184,7 @@
 					<code>Total blocks: {$total_comms}</code>
 				</p>
 				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-hover">
+					<table class="table table-bordered table-striped table-hover tbl-sm">
 						<thead>
 							<tr>
 								<th width="100px">
@@ -245,7 +245,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-6 grid-margin" data-aos="fade-out" id="test">
+	<div class="col-lg-6 grid-margin" data-aos="fade-out" id="test" data-aos-delay="550">
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title" style="margin-bottom:0px;">Latest Players Blocked</h4>
@@ -253,7 +253,7 @@
 					<code>Total Stopped: {$total_blocked}</code>
 				</p>
 				<div class="table-responsive">
-					<table class="table table-bordered table-striped table-hover">
+					<table class="table table-bordered table-striped table-hover tbl-sm">
 						<thead>
 							<tr>
 								<th width="100px">

@@ -72,7 +72,7 @@
 				<div align="right" style="margin-top: 3px; font-size:7pt">SourceComms plugin &#038;	integration to SourceBans made by <a href="https://github.com/ppalex7" target="_blank">Alex</a></div>
 				<br />
 				<div id="banlist" class="table-responsive">
-					<table class="table table-hover">
+					<table class="table table-hover tbl-sm">
 						<thead>
 							<tr>
 								<th width="12%">MOD/Type</th>
@@ -90,7 +90,7 @@
 						onclick="xajax_ServerHostPlayers({$ban.server_id}, 'id', 'host_{$ban.ban_id}');"
 						{/if}
 						>
-						<td align="center" class="fix_icons">{$ban.mod_icon|replace:'images':'themes/star/images'|replace:'jpg':'png'}</td>
+						<td align="center" class="fix_icons img-ss">{$ban.mod_icon|replace:'images':'themes/star/images'|replace:'jpg':'png'}</td>
 						<td align="center">{$ban.ban_date}</td>
 						<td>
 							<div style="float:left;">
@@ -362,9 +362,9 @@
 		var e = vc_obj[i].getElementsByTagName("img")[1];
 		var d = document.createElement('i');
 		if(e.src.indexOf("type_v")!=-1)
-			d.className = "icon-md mdi mdi-microphone-off";
+			d.className = "icon-26px mdi mdi-microphone-off";
 		else
-			d.className = "icon-md mdi mdi-pencil-off";
+			d.className = "icon-26px mdi mdi-pencil-off";
 		e.parentNode.replaceChild(d, e);
 	}
 	

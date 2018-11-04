@@ -7,7 +7,7 @@ Access Denied!
 			<div class="card-body">
 				<h3>Server Mods <i class="btn btn-outline-primary btn-rounded btn-fw" style="width:20px;height:20px;padding:0px;line-height:18px;">Total Mods:{$mod_count}</i></h3>
 				<div id="banlist" class="table-responsive">
-					<table class="table table-striped">
+					<table class="table table-striped tbl-sm">
 						<thead>
 							<tr>
 								<th width="50%">Name</th>
@@ -26,7 +26,7 @@ Access Denied!
 							<tr id="mid_{$mod.mid}">
 								<td>{$mod.name|htmlspecialchars}</td>
 								<td>{$mod.modfolder|htmlspecialchars}</td>
-								<td align="center"><img src="images/games/{$mod.icon}" style="width:16px !important; height:16px !important;"></td>
+								<td align="center"><img src="themes/star/images/games/{$mod.icon}" class="img-ss"></td>
 								<td>{$mod.steam_universe|htmlspecialchars}</td>
 								{if $permission_editmods || $permission_deletemods}
 								<td>

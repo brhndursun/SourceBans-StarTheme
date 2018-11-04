@@ -67,7 +67,7 @@
 				<p>Total Bans: {$total_bans}</p>
 				{php} require (TEMPLATES_PATH . "/admin.bans.search.php");{/php}
 				<div id="banlist" class="table-responsive">
-					<table class="table table-hover">
+					<table class="table table-hover tbl-sm">
 						<thead>
 							<tr>
 								{if $view_bans}
@@ -95,18 +95,18 @@
 						>
 						{if $view_bans}
 						<td align="center"  style="padding:0px;width:3px;">
-							<input type="checkbox" name="chkb_{$smarty.foreach.banlist.index}" id="chkb_{$smarty.foreach.banlist.index}" value="{$ban.ban_id}">
+							<input type="checkbox" class="no-collapsable" name="chkb_{$smarty.foreach.banlist.index}" id="chkb_{$smarty.foreach.banlist.index}" value="{$ban.ban_id}">
 						</td>
 						{/if}
-						<td align="center" >{$ban.mod_icon|replace:'images':'themes/star/images'|replace:'jpg':'png'}</td>
-						<td align="center" >{$ban.ban_date}</td>
+						<td align="center" class="img-ss">{$ban.mod_icon|replace:'images':'themes/star/images'|replace:'jpg':'png'}</td>
+						<td align="center">{$ban.ban_date}</td>
 						<td >
-							<div style="float:left;">
+							<div style="float:left;"><a href="#" class="no-collapsable">
 								{if empty($ban.player)}
 								<i><font color="#677882">no nickname present</font></i>
 								{else}
 								{$ban.player|escape:'html'|stripslashes}
-								{/if}
+								{/if}</a>
 							</div>
 							{if $ban.demo_available}
 							<div style="float:right;">
@@ -407,7 +407,6 @@
 {literal}
 <script type="text/javascript">
 	window.addEvent('domready', function(){
-		fix_page_nav(document.getElementById("banlist-nav"));
 		InitAccordion('tr.opener', 'div.opener', 'mainwrapper');
 		{/literal}
 		{if $view_bans}
@@ -439,6 +438,14 @@
 				}
 			}
 		}
+		
+		$(function() {
+			$( "a" ).click(function( event ) {
+  event.stopPropagation();
+  alert(1);
+});
+		});
+		
 </script>
 {/literal}
 {/if}
