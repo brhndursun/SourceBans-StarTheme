@@ -95,18 +95,18 @@
 						>
 						{if $view_bans}
 						<td align="center"  style="padding:0px;width:3px;">
-							<input type="checkbox" class="no-collapsable" name="chkb_{$smarty.foreach.banlist.index}" id="chkb_{$smarty.foreach.banlist.index}" value="{$ban.ban_id}">
+							<input type="checkbox" name="chkb_{$smarty.foreach.banlist.index}" id="chkb_{$smarty.foreach.banlist.index}" value="{$ban.ban_id}">
 						</td>
 						{/if}
 						<td align="center" class="img-ss">{$ban.mod_icon|replace:'images':'themes/star/images'|replace:'jpg':'png'}</td>
 						<td align="center">{$ban.ban_date}</td>
 						<td >
-							<div style="float:left;"><a href="#" class="no-collapsable">
+							<div style="float:left;">
 								{if empty($ban.player)}
 								<i><font color="#677882">no nickname present</font></i>
 								{else}
 								{$ban.player|escape:'html'|stripslashes}
-								{/if}</a>
+								{/if}
 							</div>
 							{if $ban.demo_available}
 							<div style="float:right;">
@@ -438,12 +438,6 @@
 				}
 			}
 		}
-		
-		$(function() {
-			$( "a" ).click(function( event ) {
-  event.stopPropagation();
-  alert(1);
-});
 		});
 		
 </script>
