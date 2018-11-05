@@ -118,10 +118,20 @@ function NavListFix() {
 		}
 	}
 }
-/*
-document.getElementById("os_4").addEventListener('DOMSubtreeModified', function () {
-  document.getElementById("breadcrumb").innerHTML+="+";
-}, false);
-Detect changes on server list
-Change path of img
-*/
+
+/* Detect changes in server list and change path to theme folder */
+var all_os = document.querySelectorAll('[id^="os_"]');
+var all_vac = document.querySelectorAll('[id^="vac_"]');
+
+for (i = 0; i < all_os.length; i++) {
+	all_os[i].addEventListener('DOMSubtreeModified', function() {
+		if(this.innerHTML.indexOf("png")!=-1 && this.innerHTML.indexOf("themes")==-1){
+			this.innerHTML = this.innerHTML.replace("images","themes/star/images");
+		}
+	}, false);
+	all_vac[i].addEventListener('DOMSubtreeModified', function() {
+		if(this.innerHTML.indexOf("png")!=-1 && this.innerHTML.indexOf("themes")==-1){
+			this.innerHTML = this.innerHTML.replace("images","themes/star/images");
+		}
+	}, false);
+}
