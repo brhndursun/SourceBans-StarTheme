@@ -230,7 +230,7 @@
 												{if $ban.ip == "none"}
 												<i><font color="#677882">no IP address present</font></i>
 												{else}
-												{$ban.ip|replace:'images':'themes/star/images'|replace:'jpg':'png'}
+												{$ban.ip|replace:'images':'themes/star/images'|replace:'jpg':'png'|replace:'alt=':'class="img-ss" alt='}
 												{/if}
 											</td>
 										</tr>

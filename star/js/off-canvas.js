@@ -46,7 +46,7 @@ for (i = 0; i < tw_obj.length; i++) {
 // Fix: Display first item
 if (document.getElementById("admin-page-content")) {
 	var pageURL = window.location.href;
-	if (pageURL.indexOf("c=groups&o=edit") != -1 || pageURL.indexOf("c=admins&o=editpermissions") != -1) {
+	if (pageURL.indexOf("c=groups&o=edit") != -1 || pageURL.indexOf("c=admins&o=editpermissions") != -1 || pageURL.indexOf("p=admin&c=bans&o=edit") != -1) {
 		document.getElementById("admin-page-content").addClass("card");
 		document.getElementById("add-group").addClass("card-body");
 
@@ -127,11 +127,13 @@ for (i = 0; i < all_os.length; i++) {
 	all_os[i].addEventListener('DOMSubtreeModified', function() {
 		if(this.innerHTML.indexOf("png")!=-1 && this.innerHTML.indexOf("themes")==-1){
 			this.innerHTML = this.innerHTML.replace("images","themes/star/images");
+			this.innerHTML = this.innerHTML.replace("src=","class=\"img-ss\" src=");
 		}
 	}, false);
 	all_vac[i].addEventListener('DOMSubtreeModified', function() {
 		if(this.innerHTML.indexOf("png")!=-1 && this.innerHTML.indexOf("themes")==-1){
 			this.innerHTML = this.innerHTML.replace("images","themes/star/images");
+			this.innerHTML = this.innerHTML.replace("src=","class=\"img-ss\" src=");
 		}
 	}, false);
 }
