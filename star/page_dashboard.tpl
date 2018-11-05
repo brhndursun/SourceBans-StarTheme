@@ -235,7 +235,7 @@
 									{else}
 									<label class="badge badge-warning">
 									{/if}
-									{if $player.length|count_characters:true>0}{$player.length}{else}Session{/if}{if $player.unbanned} ({$player.ub_reason}){/if}</label>
+									{if $player.length|count_characters>0}{$player.length}{else}Session{/if}{if $player.unbanned} ({$player.ub_reason}){/if}</label>
 								</td>
 							</tr>
 							{/foreach}

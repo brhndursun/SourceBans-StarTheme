@@ -7,7 +7,7 @@
 					{if $IN_SERVERS_PAGE && $access_bans}
 					<div style="text-align:right; width:100%;"><span class="text-muted" style="font-size:12px;">Hint: Rightclick on a player to open a context menu with options to kick, ban or contact the player directly.</span></div>
 					{/if}
-					<table class="table table-bordered table-striped table-hover">
+					<table class="table table-bordered table-striped table-hover tbl-sm">
 						<thead>
 							<tr>
 								<th width="2%" height="16" class="listtable_top">MOD</th>
