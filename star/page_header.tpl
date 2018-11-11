@@ -24,7 +24,7 @@
 					<img src="images/{$header_logo}" alt="SourceBans Logo" />
 					</a>
 					<a class="navbar-brand brand-logo-mini" href="index.php">
-					<img src="images/{$header_logo|replace:'.':'-mini.'}" alt="SourceBans Logo" />
+					<img src="images/{$header_logo|replace:'.':'-mini.'}" alt="SourceBans Logo" onError="this.onerror=null;this.src='themes/star/images/sb-large-mini.png';" />
 					</a>
 				</div>
 				<div class="navbar-menu-wrapper d-flex align-items-center">

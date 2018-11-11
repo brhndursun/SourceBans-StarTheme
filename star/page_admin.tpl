@@ -107,8 +107,8 @@
 			<div class="d-flex align-items-center">
 			  <h1 class="font-weight-medium mb-2 timer count-number" data-to="{$total_bans}" data-speed="1500"></h1>
 			  <h5 class="font-weight-medium text-danger ml-2">Total Bans</h5>
-			  <h5 class="font-weight-medium mb-2 mx-lg-1"> and </h5>
-			  <h1 class="font-weight-medium mb-2 timer count-number" data-to="{$total_blocks}" data-speed="1500"></h1>
+			  <h5 class="font-weight-medium mb-2 mx-1 d-none d-sm-flex"> and </h5>
+			  <h1 class="font-weight-medium mb-2 timer count-number ml-2 ml-sm-0" data-to="{$total_blocks}" data-speed="1500"></h1>
 			  <h5 class="font-weight-medium text-danger ml-2">Connections Blocked</h5>
 			</div>
 			<div class="d-flex align-items-center">
@@ -126,8 +126,8 @@
 			<div class="d-flex align-items-center">
 			  <h1 class="font-weight-medium mb-2 timer count-number" data-to="{$total_protests}" data-speed="1500"></h1>
 			  <h5 class="font-weight-medium text-info ml-2">Pending</h5>
-			  <h5 class="font-weight-medium mb-2 mx-lg-1"> and </h5>
-			  <h1 class="font-weight-medium mb-2 timer count-number" data-to="{$archived_protests}" data-speed="1500"></h1>
+			  <h5 class="font-weight-medium mb-2 mx-1 d-none d-sm-flex"> and </h5>
+			  <h1 class="font-weight-medium mb-2 timer count-number ml-2 ml-sm-0" data-to="{$archived_protests}" data-speed="1500"></h1>
 			  <h5 class="font-weight-medium text-info ml-2">Archived Protests</h5>
 			</div>
 		  </div>
@@ -141,8 +141,8 @@
 			<div class="d-flex align-items-center">
 			  <h1 class="font-weight-medium mb-2 timer count-number" data-to="{$total_submissions}" data-speed="1500"></h1>
 			  <h5 class="font-weight-medium text-dark ml-2">Pending</h5>
-			  <h5 class="font-weight-medium mb-2 mx-lg-1"> and </h5>
-			  <h1 class="font-weight-medium mb-2 timer count-number" data-to="{$archived_submissions}" data-speed="1500"></h1>
+			  <h5 class="font-weight-medium mb-2 mx-1 d-none d-sm-flex"> and </h5>
+			  <h1 class="font-weight-medium mb-2 timer count-number ml-2 ml-sm-0" data-to="{$archived_submissions}" data-speed="1500"></h1>
 			  <h5 class="font-weight-medium text-dark ml-2">Archived Submissions</h5>
 			</div>
 		  </div>
