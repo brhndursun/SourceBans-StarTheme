@@ -16612,4 +16612,63 @@ ul {
   height: 5px;
 }
 
+/** ======= Context Menu Styles ======= **/
+
+div.contextmenu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.08);
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 4px;
+	width: 10em;
+	padding-bottom:2px;
+}
+div.contextmenu .head {
+	border-radius: 4px;
+	font-size: 12px;
+	background-color: #f2f8f9;
+	padding-top: 4px;
+	padding-right: 5px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	color: #308ee0;
+}
+div.contextmenu a {
+	color:#222;
+	display: block;
+	text-decoration: none;
+	cursor: default;
+	outline: none;
+	font-size: 11px;
+	padding: 4px 15px;
+	margin: 0 2px;
+}
+div.contextmenu a.disabled {
+	color: #bbb;
+}
+div.contextmenu a.disabled:hover {
+	background: #f2feff;
+}
+div.contextmenu a:hover {
+	background-color: #f2f8f9;
+}
+div.contextmenu .separator {
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	border-bottom: 1px solid #eee;
+	margin: 4px 4px;
+}
+
+
 /*# sourceMappingURL=maps/style.css.map */
+
+
+
