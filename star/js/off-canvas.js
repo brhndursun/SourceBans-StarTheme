@@ -43,10 +43,20 @@ for (i = 0; i < tw_obj.length; i++) {
 	tw.getElementsByTagName("a")[0].addClass("nav-link");
 	tw.getElementsByTagName("a")[1].addClass("nav-link");
 }
+
+//Prevent Closing when checkbox checked
+function PreventClose(event)
+{
+	event.stopPropagation();
+}
+
 // Fix: Display first item
 if (document.getElementById("admin-page-content")) {
 	var pageURL = window.location.href;
-	if (pageURL.indexOf("c=groups&o=edit") != -1 || pageURL.indexOf("c=admins&o=editpermissions") != -1 || pageURL.indexOf("p=admin&c=bans&o=edit") != -1) {
+	if (pageURL.indexOf("c=groups&o=edit") != -1 || 
+		pageURL.indexOf("c=admins&o=editpermissions") != -1 || 
+		pageURL.indexOf("p=admin&c=bans&o=edit") != -1 ||
+		pageURL.indexOf("p=admin&c=comms&o=edit") != -1) {
 		document.getElementById("admin-page-content").addClass("card");
 		document.getElementById("add-group").addClass("card-body");
 
@@ -59,6 +69,10 @@ if (document.getElementById("admin-page-content")) {
 		for (var i = 0; i < inputbox_all.length; i++) {
 			if (!inputbox_all[i].classList.contains('btn'))
 				inputbox_all[i].addClass("form-control");
+		}
+		var textarea_all = document.getElementsByTagName("textarea");
+		for (var i = 0; i < textarea_all.length; i++) {
+				textarea_all[i].addClass("form-control");
 		}
 		var select_all = document.getElementsByTagName("select");
 		for (var i = 0; i < select_all.length; i++) {
@@ -117,7 +131,67 @@ function NavListFix() {
 			}
 		}
 	}
+
+	var l_obj = getElementsById("ul","fix_banlinks");
+	for(k = 0; k < l_obj.length; k++) {
+		var a_obj = l_obj[k].getElementsByTagName("a");
+		for (j = 0; j < a_obj.length; j++) {
+			var e = a_obj[j].getElementsByTagName("img")[0];
+			var d = document.createElement('i');
+			if (a_obj[j].innerHTML.indexOf("Reban") != -1) {
+				d.className = "icon-sm mdi mdi-do-not-disturb";
+			}else if (a_obj[j].innerHTML.indexOf("Comms") != -1) {
+				d.className = "icon-sm mdi mdi-microphone-off";
+			}else if (e.src.indexOf("demo") != -1) {
+				d.className = "icon-sm mdi mdi-lambda";
+			}else if (e.src.indexOf("details") != -1) {
+				d.className = "icon-sm mdi mdi-comment-text";
+			}else if (e.src.indexOf("groups") != -1) {
+				d.className = "icon-sm mdi mdi-account-multiple";
+			}else if (e.src.indexOf("group_delete") != -1) {
+				d.className = "icon-sm mdi mdi-account-multiple-minus";
+			}else if (e.src.indexOf("edit") != -1) {
+				d.className = "icon-sm mdi mdi-pencil";
+			}else if (e.src.indexOf("locked") != -1) {
+				d.className = "icon-sm mdi mdi-delete-empty";
+			}else if (e.src.indexOf("delete") != -1) {
+				d.className = "icon-sm mdi mdi-delete";
+			}
+			e.parentNode.replaceChild(d, e);
+		}
+	}
+
+	var l_obj = getElementsById("ul","fix_commlinks");
+	for(k = 0; k < l_obj.length; k++) {
+		var a_obj = l_obj[k].getElementsByTagName("a");
+		for (j = 0; j < a_obj.length; j++) {
+			var e = a_obj[j].getElementsByTagName("img")[0];
+			var d = document.createElement('i');
+			if (a_obj[j].innerHTML.indexOf("ReGag") != -1) {
+				d.className = "icon-sm mdi mdi-pencil-off";
+			}else if (a_obj[j].innerHTML.indexOf("ReMute") != -1) {
+				d.className = "icon-sm mdi mdi-microphone-off";
+			}else if (e.src.indexOf("demo") != -1) {
+				d.className = "icon-sm mdi mdi-lambda";
+			}else if (e.src.indexOf("details") != -1) {
+				d.className = "icon-sm mdi mdi-comment-text";
+			}else if (e.src.indexOf("groups") != -1) {
+				d.className = "icon-sm mdi mdi-account-multiple";
+			}else if (e.src.indexOf("group_delete") != -1) {
+				d.className = "icon-sm mdi mdi-account-multiple-minus";
+			}else if (e.src.indexOf("edit") != -1) {
+				d.className = "icon-sm mdi mdi-pencil";
+			}else if (e.src.indexOf("locked") != -1) {
+				d.className = "icon-sm mdi mdi-delete-empty";
+			}else if (e.src.indexOf("delete") != -1) {
+				d.className = "icon-sm mdi mdi-delete";
+			}
+			e.parentNode.replaceChild(d, e);
+		}
+	}
 }
+
+
 
 /* Detect changes in server list and change path to theme folder */
 var all_os = document.querySelectorAll('[id^="os_"]');

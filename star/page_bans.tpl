@@ -78,13 +78,13 @@
 									</button>
 								</th>
 								{/if}
-								<th width="12%">MOD/Country</th>
-								<th width="14%">Date</th>
+								<th width="12%" class="text-center">MOD/Country</th>
+								<th width="14%" class="text-center">Date</th>
 								<th>Player</th>
 								{if !$hideadminname}
 								<th width="20%">Admin</th>
 								{/if}
-								<th width="10%">Length</th>
+								<th width="10%" class="text-center">Length</th>
 							</tr>
 						</thead>
 						{foreach from=$ban_list item=ban name=banlist}
@@ -94,8 +94,13 @@
 						{/if}
 						>
 						{if $view_bans}
-						<td align="center"  style="padding:0px;width:3px;">
-							<input type="checkbox" name="chkb_{$smarty.foreach.banlist.index}" id="chkb_{$smarty.foreach.banlist.index}" value="{$ban.ban_id}">
+						<td width="20px">
+							<div class="form-check" onclick="PreventClose(event);">
+								<label class="form-check-label pl-0">
+								<input id="chkb_{$smarty.foreach.banlist.index}" type="checkbox" name="chkb_{$smarty.foreach.banlist.index}" value="{$ban.ban_id}" vspace="5px" class="form-check-input"> &nbsp;
+								<i class="input-helper"></i></label>
+							</div>
+
 						</td>
 						{/if}
 						<td align="center" class="img-ss">{$ban.mod_icon|replace:'images':'themes/star/images'|replace:'jpg':'png'}</td>
@@ -159,7 +164,7 @@
 														.imgfix > a > img { width:16px; height:16px;}
 													</style>
 													{/literal}
-													<ul class="list-arrow">
+													<ul class="list-arrow" id="fix_banlinks">
 														{if $ban.unbanned && $ban.reban_link != false}
 														<li>{$ban.reban_link}</li>
 														{/if}
@@ -376,9 +381,10 @@
 					</table>
 					<div class="col-12 py-xl-2 text-center">
 						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw m-xl-2">
-							{$ban_nav} | 
+							{$ban_nav}  {if $view_bans} | 
 							<button type="button" class="btn btn-outline-primary btn-rounded btn-fw" style="height:24px;padding: 2px 10px; min-width:85px;" 
 								onclick="TickSelectAll();return false;" title="Select All" name="tickswitchlink" id="tickswitchlink">Select All</button>
+							{/if}
 							{if $general_unban || $can_delete}
 							<select name="bulk_action" id="bulk_action" onchange="BulkEdit(this,'{$admin_postkey}');" class="btn btn-outline-primary btn-rounded btn-fw"
 								style="min-width: auto; height: 24px; padding: 0px 12px;">
@@ -413,31 +419,6 @@
 		$('tickswitch').value=0;
 		{/if}
 		{literal}
-		});
-		 
-	var l_obj = document.getElementsByClassName("linkfix");
-		for(k = 0;k<l_obj.length;k++)
-		{
-			var a_obj = l_obj[k].getElementsByTagName("a");
-			for(j = 0;j<a_obj.length;j++)
-			{
-				var img_objs = a_obj[j].getElementsByTagName("img");
-				for(i = 0;i<img_objs.length;i++)
-				{
-					var e = img_objs[i];
-					var d = document.createElement('i');
-					if(e.src.indexOf("delete")!=-1)
-					{
-						d.className = "icon-sm mdi mdi-delete";
-					}
-					if(e.src.indexOf("edit")!=-1)
-					{
-						d.className = "icon-sm mdi mdi-pencil";
-					}
-					e.parentNode.replaceChild(d, e);
-				}
-			}
-		}
 		});
 		
 </script>

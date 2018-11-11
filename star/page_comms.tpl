@@ -158,7 +158,7 @@
 														.imgfix > a > img { width:16px; height:16px;}
 													</style>
 													{/literal}
-													<ul class="list-arrow">
+													<ul class="list-arrow" id="fix_commlinks">
 														{if $ban.unbanned && $ban.reban_link != false}
 														<li>{$ban.reban_link}</li>
 														{/if}
