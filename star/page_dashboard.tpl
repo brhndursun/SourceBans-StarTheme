@@ -161,7 +161,7 @@
 										<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
 										{/if}
 										{else}
-										<div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: {math equation="( n - c ) / ( ( e - c ) / 100 )" e=$player.e_secs c=$player.c_secs n=$smarty.now}%">
+										<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {10|rand:90}%">  
 									</div>
 									{/if}
 				</div>
