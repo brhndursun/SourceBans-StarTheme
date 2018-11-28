@@ -19,8 +19,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							{foreach from=$server_list item=server}
-							<tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_{$server.sid}" aria-expanded="{if $smarty.get.s+1==$server.sid}true{else}false{/if}" aria-controls="collapseExample" {if !$IN_SERVERS_PAGE} onclick="{$server.evOnClick}"{/if}>
+							{foreach from=$server_list item=server key=index}
+							<tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_{$server.sid}" aria-expanded="{if $smarty.get.s==$index && isset($smarty.get.s)}true{else}false{/if}" aria-controls="collapseExample" {if !$IN_SERVERS_PAGE} onclick="{$server.evOnClick}"{/if}>
 							<td height="16" align="center"><img src="themes/star/images/games/{$server.icon}" class="img-ss" /></td>
 							<td height="16" align="center" id="os_{$server.sid}"></td>
 							<td height="16" align="center" id="vac_{$server.sid}"></td>
@@ -31,7 +31,7 @@
 							{if $IN_SERVERS_PAGE}
 							<tr>
 								<td colspan="7" align="center" style="padding:0;">
-									<div class="collapse {if $server.sid == $smarty.get.s+1}show{/if}" id="expand_{$server.sid}" data-parent="#server_group">
+									<div class="collapse {if $index == $smarty.get.s && isset($smarty.get.s)}show{/if}" id="expand_{$server.sid}" data-parent="#server_group">
 										<div id="sinfo_{$server.sid}">
 											<table width="100%" border="0" class="table table-bordered table-striped table-hover">
 												<tr>
@@ -75,9 +75,3 @@
 		</div>
 	</div>
 </div>
-{if $IN_SERVERS_PAGE}
-<script type="text/javascript">
-	InitAccordion('tr.opener', 'div.opener', 'mainwrapper');
-		
-</script>
-{/if}

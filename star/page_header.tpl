@@ -76,7 +76,7 @@
 						<li class="nav-item dropdown ">
 							<a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
 							<span class="profile-text d-none d-xl-inline-block">Hello, {$username} !</span>
-							<img class="img-xs rounded-circle" src="themes/{$theme_name}/images/faces/face{1|rand:27}.jpg" alt="profile image">
+							<img class="img-xs rounded-circle" src='{php} include("./themes/star/photoGET.php");{/php}' alt="profile image">
 							</a>
 							<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
 								<a class="dropdown-item p-0">
@@ -103,6 +103,8 @@
 								</a>
 							</div>
 						</li>
+						{else}
+							{php} include("./themes/star/photoNULL.php");{/php}
 						{/if}
 					</ul>
 					<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -119,7 +121,8 @@
 				{if $logged_in}
 				<div class="user-wrapper">
 					<div class="profile-image">
-						<img src="themes/{$theme_name}/images/faces/face{1|rand:27}.jpg" alt="profile image">
+						
+						<img src='{php} include("./themes/star/photoGET.php");{/php}' alt="profile image">
 					</div>
 					<div class="text-wrapper">
 						<a class="profile-name" href="index.php?p=account">{$username}</a>

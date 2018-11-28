@@ -38,7 +38,7 @@ define('theme_name', "Star Theme");
 define('theme_author', "Distortion, Bootstrapdash");
 
 // Set the version of the theme here
-define('theme_version', "1.4.3");
+define('theme_version', "1.5.0");
 
 // Set the link of the theme here
 define('theme_link', "https://www.bootstrapdash.com/product/star-admin-free/");

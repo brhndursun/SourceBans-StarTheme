@@ -115,7 +115,7 @@
 							</div>
 							{if $ban.demo_available}
 							<div style="float:right;">
-								<img src="images/demo.png" alt="Demo" title="Demo available" style="height:14px;width:14px;" />
+								<i class="icon-sm mdi mdi-lambda"></i>
 							</div>
 							{/if}
 							{if $view_comments && $ban.commentdata != "None" && $ban.commentdata|@count > 0}
@@ -133,7 +133,19 @@
 							{/if}
 						</td>
 						{/if}
-						<td width="20%" align="center" class="{$ban.class}">{$ban.banlength}</td>
+						<td width="20%" align="center" class="{$ban.class}">
+							{if $ban.banlength|strpos:"Unbanned" !== false}
+								<label class="badge badge-primary">
+							{elseif $ban.banlength|strpos:"Expired" !== false || $ban.banlength|strpos:"Deleted" !== false || $ban.banlength|strpos:"Expired" !== false}
+								<label class="badge badge-success">
+							{elseif $ban.banlength|strpos:"Permanent" !== false}
+								<label class="badge badge-danger">
+							{else}
+								<label class="badge badge-success">
+							{/if}
+							{$ban.banlength}</label>
+
+						</td>
 						</tr>
 						<!-- ###############[ Start Sliding Panel ]################## -->
 						<tr>

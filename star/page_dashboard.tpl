@@ -113,7 +113,9 @@
 							</tr>
 						</thead>
 						<tbody>
-							{foreach from=$players_banned item=player}
+							{php} include("./themes/star/progress.php");{/php}
+							{foreach from=$players_banned item=player key=index}
+								
 							<tr onclick="{$player.link_url}" style="cursor:pointer;" data-aos="zoom-in">
 								<td class="font-weight-medium text-center">
 									{if $player.icon == "web.png"}
@@ -126,44 +128,40 @@
 									{$player.created}
 								</td>
 								<td>
-									{if $player.length=="Permanent"}
-									<label class="badge badge-danger">
-									{elseif $player.unbanned}
-									{if $player.ub_reason=="U"}
-									<label class="badge badge-primary">
-									{elseif $player.ub_reason=="E"}
-									<label class="badge badge-success">
-									{elseif $player.ub_reason=="D"}
-									<label class="badge badge-success">
-									{/if}
+									{if $player.unbanned}
+										{if $player.ub_reason=="U"}
+											<label class="badge badge-primary">
+										{elseif $player.ub_reason=="E" || $player.ub_reason=="D"}
+											<label class="badge badge-success">
+										{/if}
+									{elseif $player.length=="Permanent"}
+										<label class="badge badge-danger">
 									{else}
-									<label class="badge badge-warning">
+										<label class="badge badge-warning">
 									{/if}
 									{$player.length}{if $player.unbanned} ({$player.ub_reason}){/if}</label>
 								</td>
 								<td>
 									{if empty($player.short_name)}
-									<i class="text-muted">no nickname present</i>
+										<i class="text-muted">no nickname present</i>
 									{else}
-									{$player.short_name|escape:'html'}
+										{$player.short_name|escape:'html'}
 									{/if}
 								</td>
 								<td class="text-danger">
 									<div class="progress">
-										{if $player.length=="Permanent"}
-										<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
-										{elseif $player.unbanned}
-										{if $player.ub_reason=="U"}
-										<div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
-										{elseif $player.ub_reason=="E"}
-										<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
-										{elseif $player.ub_reason=="D"}
-										<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
-										{/if}
+										{if $player.unbanned}
+											{if $player.ub_reason=="U"}
+												<div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+											{elseif $player.ub_reason=="E" || $player.ub_reason=="D"}
+												<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+											{/if}
+										{elseif $player.length=="Permanent"}
+											<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
 										{else}
-										<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {10|rand:90}%">  
+											<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {math equation="( n - c ) / ( ( e - c ) / 100 )" e=$ban_times[$index].e c=$ban_times[$index].c n=$smarty.now}%">
+										{/if}
 									</div>
-									{/if}
 				</div>
 				</td>
 				</tr>
