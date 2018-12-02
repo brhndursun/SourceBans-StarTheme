@@ -1,8 +1,8 @@
 <?php
 
 if (!defined("IN_SB")) {
-    echo "You should not be here. Only follow links!";
-    die();
+	echo "You should not be here. Only follow links!";
+	die();
 }
 if (isset($_COOKIE["profilePhoto"]) || !empty($_COOKIE["profilePhoto"])) {
 	echo $_COOKIE["profilePhoto"];
@@ -16,8 +16,8 @@ if (isset($_COOKIE["profilePhoto"]) || !empty($_COOKIE["profilePhoto"])) {
 		$results = $GLOBALS['db']->Execute("Select @sum:=( ( $key + $authServer ) + ( $clientID * 2 ) ) as s64");
 		$res = $results->fields["s64"];
 
-	    $endpoint = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" . STEAMAPIKEY . "&steamids=" . $res;
-	    $data = json_decode(file_get_contents($endpoint), true);
+		$endpoint = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=" . STEAMAPIKEY . "&steamids=" . $res;
+		$data = json_decode(file_get_contents($endpoint), true);
 		if(isset($data['response']['players'][0]['avatarmedium']))
 			$profilePicture = $data['response']['players'][0]['avatarmedium'];
 		else
