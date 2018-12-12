@@ -123,7 +123,19 @@
 							{/if}
 						</td>
 						{/if}
-						<td align="center" class="{$ban.class}">{$ban.banlength}</td>
+						<td>
+							{if $ban.banlength|strpos:"Unbanned" !== false}
+								<label class="badge badge-primary">
+							{elseif $ban.banlength|strpos:"Expired" !== false || $ban.banlength|strpos:"Deleted" !== false || $ban.banlength|strpos:"Expired" !== false}
+								<label class="badge badge-success">
+							{elseif $ban.banlength|strpos:"Permanent" !== false}
+								<label class="badge badge-danger">
+							{else}
+								<label class="badge badge-warning">
+							{/if}
+							{$ban.banlength}</label>
+
+						</td>
 						</tr>
 						<!-- ###############[ Start Sliding Panel ]################## -->
 						<tr>

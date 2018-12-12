@@ -141,7 +141,7 @@
 							{elseif $ban.banlength|strpos:"Permanent" !== false}
 								<label class="badge badge-danger">
 							{else}
-								<label class="badge badge-success">
+								<label class="badge badge-warning">
 							{/if}
 							{$ban.banlength}</label>
 

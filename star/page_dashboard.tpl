@@ -267,7 +267,7 @@
 						</thead>
 						<tbody>
 							{foreach from=$players_blocked item=player}
-							<tr{if $dashboard_lognopopup} onclick="{$player.link_url}"{else} {/if} style="cursor: pointer;" id="{$player.server}" title="Querying Server Data..." data-aos="zoom-in">
+							<tr{if $dashboard_lognopopup} onclick="{$player.link_url}"{else} onclick="{$player.popup}" {/if} style="cursor: pointer;" id="{$player.server}" title="Querying Server Data..." data-aos="zoom-in">
 							<td>
 								<i class="icon-md mdi mdi-minus-circle"></i>
 							</td>
