@@ -59,29 +59,38 @@ if (document.getElementById("admin-page-content")) {
 		pageURL.indexOf("p=admin&c=comms&o=edit") != -1) {
 		document.getElementById("admin-page-content").addClass("card");
 		document.getElementById("add-group").addClass("card-body");
-
-		var table_all = document.getElementsByTagName("table");
+		var apc = document.getElementById("admin-page-content");
+		var table_all = apc.getElementsByTagName("table");
 		for (var i = 0; i < table_all.length; i++) {
+			var parent = table_all[i].parentNode;
+			var wrapper = document.createElement('div');
+			wrapper.addClass("table-responsive");
+			parent.insertBefore(wrapper,table_all[i]);
+			wrapper.appendChild(table_all[i]);
 			table_all[i].addClass("table table-striped");
 		}
-
-		var inputbox_all = document.getElementsByTagName("input");
+		if($("srootcheckbox"))
+			$("srootcheckbox").getElementsByTagName("td")[3].setAttribute("width","12%");
+		var inputbox_all = apc.getElementsByTagName("input");
 		for (var i = 0; i < inputbox_all.length; i++) {
 			if (!inputbox_all[i].classList.contains('btn'))
 				inputbox_all[i].addClass("form-control");
+			inputbox_all[i].setAttribute("style","min-width:200px;");
 		}
-		var textarea_all = document.getElementsByTagName("textarea");
+		var textarea_all = apc.getElementsByTagName("textarea");
 		for (var i = 0; i < textarea_all.length; i++) {
 				textarea_all[i].addClass("form-control");
+				textarea_all[i].setAttribute("style","min-width:200px;");
 		}
-		var select_all = document.getElementsByTagName("select");
+		var select_all = apc.getElementsByTagName("select");
 		for (var i = 0; i < select_all.length; i++) {
-			select_all[i].addClass("form-control");
+				select_all[i].addClass("form-control");
+				select_all[i].setAttribute("style","min-width:200px;");
 		}
 
-		var tip_all = document.getElementsByClassName("tip");
+		var tip_all = apc.getElementsByClassName("tip");
 		for (var i = 0; i < tip_all.length; i++) {
-			tip_all[i].remove();
+				tip_all[i].remove();
 		}
 
 	}
