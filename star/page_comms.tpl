@@ -69,9 +69,15 @@
 				Communications Blocklist Overview <a class="btn btn-outline-primary btn-rounded btn-fw" style="width:20px;height:20px;padding:0px;line-height:18px;" href="index.php?p=commslist&hideinactive={if $hidetext == 'Hide'}true{else}false{/if}{$searchlink|htmlspecialchars}" title="{$hidetext} Inactive">{$hidetext} Inactive</a></h3>
 				<p>Total Blocks: {$total_bans}</p>
 				{php} require (TEMPLATES_PATH . "/admin.comms.search.php");{/php}
+				{php} $pageName="comms"; include("./themes/star/progressBansComms.php");{/php}
 				<div align="right" style="margin-top: 3px; font-size:7pt">SourceComms plugin &#038;	integration to SourceBans made by <a href="https://github.com/ppalex7" target="_blank">Alex</a></div>
 				<br />
 				<div id="banlist" class="table-responsive">
+					<div class="col-12 my-2 text-xl-right text-lg-left">
+						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
+							{$ban_nav}
+						</div>
+					</div>
 					<table class="table table-hover tbl-sm">
 						<thead>
 							<tr>
@@ -82,9 +88,12 @@
 								<th width="20%">Admin</th>
 								{/if}
 								<th width="10%">Length</th>
+								{if $list_progress}
+								<th width="200px" class="text-center">Length</th>
+								{/if}
 							</tr>
 						</thead>
-						{foreach from=$ban_list item=ban name=banlist}
+						{foreach from=$ban_list item=ban name=banlist key=index}
 						<tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_{$ban.ban_id}" aria-expanded="false" aria-controls="collapseExample"
 						{if $ban.server_id != 0}
 						onclick="xajax_ServerHostPlayers({$ban.server_id}, 'id', 'host_{$ban.ban_id}');"
@@ -134,8 +143,24 @@
 								<label class="badge badge-warning">
 							{/if}
 							{$ban.banlength}</label>
-
+							{$ban_times[$index].name}
 						</td>
+						{if $list_progress}
+						<td class="text-danger">
+							<div class="progress">
+								{if $ban.banlength|strpos:"Unbanned" !== false}
+									<div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" aria-width="100"></div>
+								{elseif $ban.banlength|strpos:"Expired" !== false || $ban.banlength|strpos:"Deleted" !== false || $ban.banlength|strpos:"Expired" !== false}
+									<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-width="100"></div>
+								{elseif $ban.banlength|strpos:"Permanent" !== false}
+									<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-width="100"></div>
+								{else}
+									<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" aria-width="{math equation="( n - c ) / ( ( e - c ) / 100 )" e=$ban_times[$index].e c=$ban_times[$index].c n=$smarty.now}">
+								{/if}
+									</div>
+							</div>
+						</td>
+						{/if}
 						</tr>
 						<!-- ###############[ Start Sliding Panel ]################## -->
 						<tr>
@@ -344,8 +369,8 @@
 						<!-- ###############[ End Sliding Panel ]################## -->
 						{/foreach}
 					</table>
-					<div class="col-12 py-xl-2 text-center">
-						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw m-xl-2">
+					<div class="col-12 my-2 text-xl-right text-lg-left">
+						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
 							{$ban_nav}
 						</div>
 					</div>

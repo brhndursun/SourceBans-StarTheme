@@ -13,14 +13,10 @@
 				<div class="card-statistics">
 					<div class="card-body">
 						<div class="clearfix">
-							<div class="float-left">
-								<i class="mdi mdi-server text-danger icon-lg" data-aos="zoom-in" data-aos-delay="100"></i>
-							</div>
-							<div class="float-right">
-								<p class="mb-0 text-right" data-aos="flip-left" data-aos-delay="300">Total Servers</p>
-								<div class="fluid-container">
-									<h3 class="font-weight-medium text-right mb-0 timer count-number" data-aos="zoom-in" data-aos-delay="50" data-to="{$server_list|@count}" data-speed="1500"></h3>
-								</div>
+							<i class="mdi float-left mdi-server text-danger icon-lg" data-aos="zoom-in" data-aos-delay="100"></i>
+							<p class="mb-0 text-right" data-aos="flip-left" data-aos-delay="300">Total Servers</p>
+							<div class="fluid-container">
+								<h3 class="font-weight-medium text-right mb-0 timer count-number" data-aos="zoom-in" data-aos-delay="50" data-to="{$server_list|@count}" data-speed="1500"></h3>
 							</div>
 						</div>
 					</div>
@@ -30,14 +26,10 @@
 				<div class="card-statistics">
 					<div class="card-body">
 						<div class="clearfix">
-							<div class="float-left">
-								<i class="mdi mdi-block-helper text-warning icon-lg" data-aos="zoom-in" data-aos-delay="300"></i>
-							</div>
-							<div class="float-right">
-								<p class="mb-0 text-right" data-aos="flip-left" data-aos-delay="500">Total Bans</p>
-								<div class="fluid-container">
-									<h3 class="font-weight-medium text-right mb-0 timer count-number" data-aos="zoom-in" data-aos-delay="250" data-to="{$total_bans}" data-speed="1500"></h3>
-								</div>
+							<i class="mdi float-left mdi-block-helper text-warning icon-lg" data-aos="zoom-in" data-aos-delay="300"></i>
+							<p class="mb-0 text-right" data-aos="flip-left" data-aos-delay="500">Total Bans</p>
+							<div class="fluid-container">
+								<h3 class="font-weight-medium text-right mb-0 timer count-number" data-aos="zoom-in" data-aos-delay="250" data-to="{$total_bans}" data-speed="1500"></h3>
 							</div>
 						</div>
 					</div>
@@ -47,14 +39,10 @@
 				<div class="card-statistics">
 					<div class="card-body">
 						<div class="clearfix">
-							<div class="float-left">
-								<i class="mdi mdi-microphone-off text-info icon-lg" data-aos="zoom-in" data-aos-delay="500"></i>
-							</div>
-							<div class="float-right">
-								<p class="mb-0 text-right" data-aos="flip-left" data-aos-delay="700">Total Comm Blocks</p>
-								<div class="fluid-container">
-									<h3 class="font-weight-medium text-right mb-0 timer count-number" data-aos="zoom-in" data-aos-delay="450" data-to="{$total_comms}" data-speed="1500"></h3>
-								</div>
+							<i class="mdi float-left mdi-microphone-off text-info icon-lg" data-aos="zoom-in" data-aos-delay="500"></i>
+							<p class="mb-0 text-right" data-aos="flip-left" data-aos-delay="700">Total Comm Blocks</p>
+							<div class="fluid-container">
+								<h3 class="font-weight-medium text-right mb-0 timer count-number" data-aos="zoom-in" data-aos-delay="450" data-to="{$total_comms}" data-speed="1500"></h3>
 							</div>
 						</div>
 					</div>
@@ -64,14 +52,10 @@
 				<div class="card-statistics">
 					<div class="card-body">
 						<div class="clearfix">
-							<div class="float-left">
-								<i class="mdi mdi-minus-circle text-success icon-lg" data-aos="zoom-in" data-aos-delay="700"></i>
-							</div>
-							<div class="float-right">
-								<p class="mb-0 text-right" data-aos="flip-left" data-aos-delay="900">Total Stopped Connections</p>
-								<div class="fluid-container">
-									<h3 class="font-weight-medium text-right mb-0 timer count-number" data-aos="zoom-in" data-aos-delay="650" data-to="{$total_blocked}" data-speed="1500"></h3>
-								</div>
+							<i class="mdi float-left mdi-minus-circle text-success icon-lg" data-aos="zoom-in" data-aos-delay="700"></i>
+							<p class="mb-0 text-right" data-aos="flip-left" data-aos-delay="900">Total Stopped Connections</p>
+							<div class="fluid-container">
+								<h3 class="font-weight-medium text-right mb-0 timer count-number" data-aos="zoom-in" data-aos-delay="650" data-to="{$total_blocked}" data-speed="1500"></h3>
 							</div>
 						</div>
 					</div>
@@ -152,21 +136,21 @@
 									<div class="progress">
 										{if $player.unbanned}
 											{if $player.ub_reason=="U"}
-												<div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+												<div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" aria-width="100"></div>
 											{elseif $player.ub_reason=="E" || $player.ub_reason=="D"}
-												<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+												<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-width="100"></div>
 											{/if}
 										{elseif $player.length=="Permanent"}
-											<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%"></div>
+											<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-width="100"></div>
 										{else}
-											<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" style="width: {math equation="( n - c ) / ( ( e - c ) / 100 )" e=$ban_times[$index].e c=$ban_times[$index].c n=$smarty.now}%">
+											<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" aria-width="{math equation="( n - c ) / ( ( e - c ) / 100 )" e=$ban_times[$index].e c=$ban_times[$index].c n=$smarty.now}">
 										{/if}
+											</div>
 									</div>
-				</div>
-				</td>
-				</tr>
-				{/foreach}
-				</tbody>
+								</td>
+							</tr>
+						{/foreach}
+					</tbody>
 				</table>
 			</div>
 		</div>

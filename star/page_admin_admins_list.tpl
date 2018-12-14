@@ -11,10 +11,12 @@ Access Denied
 				</p>
 				<br /><br />
 				{php} require (TEMPLATES_PATH . "/admin.admins.search.php");{/php}
-				<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw m-xl-2"> 
-					{$admin_nav}
-				</div>
 				<div id="banlist" class="table-responsive">
+					<div class="col-12 my-2 text-xl-right text-lg-left">
+						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
+							{$admin_nav}
+						</div>
+					</div>
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -82,6 +84,11 @@ Access Denied
 						</tr>
 						{/foreach}
 					</table>
+					<div class="col-12 my-2 text-xl-right text-lg-left">
+						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
+							{$admin_nav}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

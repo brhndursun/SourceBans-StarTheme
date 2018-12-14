@@ -6,8 +6,11 @@
 				<p>Click on a row to see more details about the event.</p>
 				<br /><br />
 				{php} require (TEMPLATES_PATH . "/admin.log.search.php");{/php}
-				<div id="banlist-nav_logs" class="btn btn-inverse-light  btn-rounded btn-fw m-xl-2">{$page_numbers}</div>
-				<br /><br />
+				<div class="col-12 my-2 text-xl-right text-lg-left">
+					<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
+						{$page_numbers}
+					</div>
+				</div>
 				<div class="table-responsive" id="loglist">
 					{literal}
 					<style>
@@ -65,6 +68,9 @@
 						{/foreach}
 					</table>
 				</div>
+				<div class="col-12 my-2 text-xl-right text-lg-left">
+					<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">{$page_numbers}</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -72,29 +78,3 @@
 <script type="text/javascript">
 	InitAccordion('tr.opener', 'div.opener', 'mainwrapper');
 </script>
-{literal}
-<script type="text/javascript">
-	var s_obj = document.getElementById("banlist-nav_logs").getElementsByTagName("select")[0];
-	if(s_obj)
-	{
-		s_obj.className += "btn btn-outline-primary btn-rounded btn-fw";
-		s_obj.style.minWidth = "auto";
-		s_obj.style.height = "24px";
-		s_obj.style.padding = "0px 12px";
-	}
-	var b_objs = document.getElementById("banlist-nav_logs").getElementsByTagName("a");
-		for(i = 0;i<b_objs.length;i++)
-		{
-			if(b_objs[i].innerHTML.indexOf("next")!=-1)
-			{
-				var a_href = b_objs[i].getAttribute("href");
-				b_objs[i].innerHTML = '<button type="button" onclick="window.location.href=\''+a_href+'\'" class="btn btn-outline-primary btn-rounded btn-fw" style="height:24px;padding: 2px; min-width:85px;">Next<i class="mdi mdi-chevron-right"></i></button>';
-			}
-			if(b_objs[i].innerHTML.indexOf("prev")!=-1)
-			{
-				var a_href = b_objs[i].getAttribute("href");
-				b_objs[i].innerHTML = '<button type="button" onclick="window.location.href=\''+a_href+'\'" class="btn btn-outline-primary btn-rounded btn-fw" style="height:24px;padding: 2px; min-width:85px;"><i class="mdi mdi-chevron-left"></i>Prev</button>';
-			}
-		}
-</script>
-{/literal}

@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-lg-6 mx-auto card pt-3">
+	<div class="col-lg-6 mx-auto pt-3">
 		<p class="text-center">
 			<button class="btn btn-inverse-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 			<i class="mdi mdi-magnify"></i>Advanced Search
@@ -11,7 +11,7 @@
 			div select.form-control{margin-top: 5px;}
 		</style>
 		{/literal}
-		<div class="collapse" id="collapseExample">
+		<div class="collapse box-shadow-delayed" id="collapseExample">
 			<div class="row mx-5">
 				<div class="form-radio col-sm-3">
 					<label class="form-check-label">

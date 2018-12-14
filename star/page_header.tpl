@@ -82,6 +82,9 @@
 								<a class="dropdown-item p-0">
 									<div class="d-flex border-bottom">
 										<div class="py-3 px-4 d-flex align-items-center justify-content-center">
+											<i class="mdi mdi-settings mr-0 text-gray"></i>
+										</div>
+										<div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
 											<i class="mdi mdi-account-outline mr-0 text-gray"></i>
 										</div>
 										<div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
@@ -92,7 +95,10 @@
 										</div>
 									</div>
 								</a>
-								<a class="dropdown-item mt-2" href="index.php?p=account">
+								<a class="dropdown-item mt-2" href="index.php?p=admin">
+								Admin Panel
+								</a>
+								<a class="dropdown-item" href="index.php?p=account">
 								Manage Account
 								</a>
 								<a class="dropdown-item" href="index.php?p=account#^1" onclick="SwapPane(1);">

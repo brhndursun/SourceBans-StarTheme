@@ -66,14 +66,35 @@
 				<h4 class="lead">Banlist Overview <a class="btn btn-outline-primary btn-rounded btn-fw" style="width:20px;height:20px;padding:0px;line-height:18px;" href="index.php?p=banlist&hideinactive={if $hidetext == 'Hide'}true{else}false{/if}{$searchlink|htmlspecialchars}" title="{$hidetext} Inactive">{$hidetext} Inactive</a></h4>
 				<p>Total Bans: {$total_bans}</p>
 				{php} require (TEMPLATES_PATH . "/admin.bans.search.php");{/php}
+				{php} $pageName="bans"; include("./themes/star/progressBansComms.php");{/php}
 				<div id="banlist" class="table-responsive">
+					<div class="col-12 my-2 text-xl-right text-lg-left">
+						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
+							{$ban_nav|replace:'|':''}  {if $view_bans} 
+							<button type="button" class="btn btn-outline-primary btn-rounded btn-fw" style="height:24px;padding: 2px 10px; min-width:85px;" 
+								onclick="_TickSelectAll();return false;" title="Select All" name="tickswitchlink2" id="tickswitchlink2">Select All</button>
+							{/if}
+							{if $general_unban || $can_delete}
+							<select name="bulk_action" id="bulk_action" onchange="BulkEdit(this,'{$admin_postkey}');" class="btn btn-outline-primary btn-rounded btn-fw"
+								style="min-width: auto; height: 24px; padding: 0px 12px;">
+								<option value="-1">Action</option>
+								{if $general_unban}
+								<option value="U">Unban</option>
+								{/if}
+								{if $can_delete}
+								<option value="D">Delete</option>
+								{/if}
+							</select>
+							{/if}
+						</div>
+					</div>
 					<table class="table table-hover tbl-sm">
 						<thead>
 							<tr>
 								{if $view_bans}
 								<th>
-									<div class="ok" style="display:none;height:16px;width:16px;cursor:pointer;" title="Select All" name="tickswitch" id="tickswitch" onclick="TickSelectAll()"></div>
-									<button type="button" class="btn btn-icons btn-outline-primary" onclick="TickSelectAll()" style="width:20px;height:20px;padding:0px;">
+									<div class="ok" style="display:none;height:16px;width:16px;cursor:pointer;" title="Select All" name="tickswitch" id="tickswitch" onclick="_TickSelectAll()"></div>
+									<button type="button" class="btn btn-icons btn-outline-primary" onclick="_TickSelectAll()" style="width:20px;height:20px;padding:0px;">
 									<i class="mdi mdi-select-all"></i>
 									</button>
 								</th>
@@ -85,9 +106,12 @@
 								<th width="20%">Admin</th>
 								{/if}
 								<th width="10%" class="text-center">Length</th>
+								{if $list_progress}
+								<th width="200px" class="text-center">Length</th>
+								{/if}
 							</tr>
 						</thead>
-						{foreach from=$ban_list item=ban name=banlist}
+						{foreach from=$ban_list item=ban name=banlist key=index}
 						<tr style="cursor:pointer;" data-toggle="collapse" data-target="#expand_{$ban.ban_id}" aria-expanded="false" aria-controls="collapseExample"
 						{if $ban.server_id != 0}
 						onclick="xajax_ServerHostPlayers({$ban.server_id}, 'id', 'host_{$ban.ban_id}');"
@@ -144,8 +168,24 @@
 								<label class="badge badge-warning">
 							{/if}
 							{$ban.banlength}</label>
-
 						</td>
+						{if $list_progress}
+						<td class="text-danger">
+
+							<div class="progress">
+								{if $ban.banlength|strpos:"Unbanned" !== false}
+									<div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" aria-width="100"></div>
+								{elseif $ban.banlength|strpos:"Expired" !== false || $ban.banlength|strpos:"Deleted" !== false || $ban.banlength|strpos:"Expired" !== false}
+									<div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" aria-width="100"></div>
+								{elseif $ban.banlength|strpos:"Permanent" !== false}
+									<div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-width="100"></div>
+								{else}
+									<div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" role="progressbar" aria-width="{math equation="( n - c ) / ( ( e - c ) / 100 )" e=$ban_times[$index].e c=$ban_times[$index].c n=$smarty.now}">
+								{/if}
+									</div>
+							</div>
+						</td>
+						{/if}
 						</tr>
 						<!-- ###############[ Start Sliding Panel ]################## -->
 						<tr>
@@ -391,11 +431,11 @@
 						<!-- ###############[ End Sliding Panel ]################## -->
 						{/foreach}
 					</table>
-					<div class="col-12 py-xl-2 text-center">
-						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw m-xl-2">
+					<div class="col-12 my-2 text-xl-right text-lg-left">
+						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
 							{$ban_nav}  {if $view_bans} | 
 							<button type="button" class="btn btn-outline-primary btn-rounded btn-fw" style="height:24px;padding: 2px 10px; min-width:85px;" 
-								onclick="TickSelectAll();return false;" title="Select All" name="tickswitchlink" id="tickswitchlink">Select All</button>
+								onclick="_TickSelectAll();return false;" title="Select All" name="tickswitchlink" id="tickswitchlink">Select All</button>
 							{/if}
 							{if $general_unban || $can_delete}
 							<select name="bulk_action" id="bulk_action" onchange="BulkEdit(this,'{$admin_postkey}');" class="btn btn-outline-primary btn-rounded btn-fw"
@@ -412,7 +452,7 @@
 						</div>
 					</div>
 					{if $can_export }
-					<div class="col-12 py-xl-2 text-center">
+					<div class="col-12 py-2 text-center no-wrap">
 						<a href="./exportbans.php?type=steam" title="Export Permanent SteamID Bans" class="btn btn-inverse-primary btn-rounded btn-fw">Export Permanent SteamID Bans</a>&nbsp;&nbsp;|&nbsp;
 						<a href="./exportbans.php?type=ip" title="Export Permanent IP Bans"class="btn btn-inverse-primary btn-rounded btn-fw">Export Permanent IP Bans</a>
 					</div>

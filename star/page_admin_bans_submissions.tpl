@@ -9,6 +9,11 @@ Access Denied!
 				<p>Click a player's nickname to view information about their submission</p>
 				<br /><br />
 				<div class="table-responsive">
+					<div class="col-12 my-2 text-xl-right text-lg-left">
+						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
+							{$submission_nav}
+						</div>
+					</div>
 					<table class="table">
 						<thead>
 							<tr>
@@ -156,8 +161,8 @@ Access Denied!
 						</tr>
 						{/foreach}
 					</table>
-					<div class="col-12 py-xl-2 text-center">
-						<div id="banlist-nav"  class="btn btn-inverse-light  btn-rounded btn-fw m-xl-2"> 
+					<div class="col-12 my-2 text-xl-right text-lg-left">
+						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
 							{$submission_nav}
 						</div>
 					</div>

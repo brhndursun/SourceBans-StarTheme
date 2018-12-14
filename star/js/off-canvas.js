@@ -43,7 +43,16 @@ for (i = 0; i < tw_obj.length; i++) {
 	tw.getElementsByTagName("a")[0].addClass("nav-link");
 	tw.getElementsByTagName("a")[1].addClass("nav-link");
 }
-
+function _TickSelectAll(){
+	TickSelectAll.call(this);
+	if($('tickswitch').value==1) {
+		$('tickswitchlink2').setProperty('title','Deselect All');
+		$('tickswitchlink2').innerHTML = 'Deselect All';
+	} else {
+		$('tickswitchlink2').setProperty('title','Select All');
+		$('tickswitchlink2').innerHTML = 'Select All';
+	}
+}
 //Prevent Closing when checkbox checked
 function PreventClose(event)
 {
@@ -119,6 +128,33 @@ function NavListFix() {
 			if (b_objs[i].innerHTML.indexOf("prev") != -1) {
 				var a_href = b_objs[i].getElementsByTagName("a")[0].getAttribute("href");
 				b_objs[i].innerHTML = '<button type="button" onclick="window.location.href=\'' + a_href + '\'" class="btn btn-outline-primary btn-rounded btn-fw" style="height:24px;padding: 2px; min-width:85px;"><i class="mdi mdi-chevron-left"></i>Prev</button>';
+			}
+		}
+		var a_objs = banlistnav[banID].getElementsByTagName("a");
+		for (i = a_objs.length-1; i >=0 ; i--) {
+			if(a_objs[i].innerHTML.indexOf("left.png")!=-1 || a_objs[i].innerHTML.indexOf("right.png")!=-1) {
+				var a_href = a_objs[i].getAttribute("href");
+				var newButton = document.createElement("button");
+				newButton.setAttribute("type","button");
+				setAttributes(newButton,{
+					"type":"button",
+					"onclick":"window.location.href=\'" + a_href + "\'",
+					"class":"btn btn-outline-primary btn-rounded btn-fw",
+					"style":"height:24px;padding: 2px; min-width:85px;"
+				});
+			}
+			console.log(a_objs[i].innerHTML.indexOf("left.png"));
+			if (a_objs[i].innerHTML.indexOf("left.png") != -1) {
+				newButton.innerHTML='<i class="mdi mdi-chevron-left"></i>Prev';
+				a_objs[i].parentNode.insertBefore(newButton,a_objs[i]);
+				banlistnav[banID].removeChild(a_objs[i]);
+				continue;
+			}
+			console.log(a_objs[i].innerHTML.indexOf("right.png"));
+			if (a_objs[i].innerHTML.indexOf("right.png") != -1) {
+				newButton.innerHTML='Next<i class="mdi mdi-chevron-right"></i>';
+				a_objs[i].parentNode.insertBefore(newButton,a_objs[i]);
+				banlistnav[banID].removeChild(a_objs[i]);
 			}
 		}
 	}
@@ -198,8 +234,21 @@ function NavListFix() {
 			e.parentNode.replaceChild(d, e);
 		}
 	}
+	setTimeout(function(){
+		var p_objs = document.getElementsByClassName("progress-bar");
+		for(i = 0; i < p_objs.length; i++) {
+			var w = p_objs[i].getAttribute("aria-width");
+			if(w!=null)
+				p_objs[i].setAttribute("style","width:"+w+"%");
+		}
+	},500);
+	
 }
-
+function setAttributes(el, attrs) {
+	for(var key in attrs) {
+		el.setAttribute(key, attrs[key]);
+	}
+}
 
 
 /* Detect changes in server list and change path to theme folder */

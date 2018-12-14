@@ -10966,6 +10966,7 @@ tbody.collapse.show {
   color: #fff;
   text-align: center;
   background-color: #007bff;
+  width: 0%;
   transition: width 0.6s ease; }
 
 .progress-bar-striped {
@@ -16667,7 +16668,22 @@ div.contextmenu .separator {
 	margin: 4px 4px;
 }
 
+/* Fix for cursor default */
+[style*="cursor: default"],
+[style*="cursor:default"],
+[style*="cursor :default"],
+[style*="cursor : default"]{
+  cursor:inherit !important;
+}
 
+.box-shadow-delayed{
+  box-shadow:0;
+  transition:0.3s ease;
+}
+
+.box-shadow-delayed.show{
+  box-shadow:0px 1px 15px 1px rgba(69, 65, 78, 0.08);
+}
 /*# sourceMappingURL=maps/style.css.map */
 
 

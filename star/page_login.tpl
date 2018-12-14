@@ -1,6 +1,6 @@
 <div class="card">
 	<div class="col-lg-4 mx-auto">
-		<div class="auto-form-wrapper p-lg-4" id="login-content">
+		<div class="auto-form-wrapper py-3 p-lg-4" id="login-content">
 					-{if $steamlogin_show == 1}-
 				<div class="form-group">
 					<label class="label">Username</label>

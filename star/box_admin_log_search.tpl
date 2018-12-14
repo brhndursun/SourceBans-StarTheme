@@ -1,12 +1,12 @@
 <div class="row">
-	<div class="col-lg-6 mx-auto card pt-3">
+	<div class="col-lg-6 mx-auto pt-3">
 		<p class="text-center">
 			<button class="btn btn-inverse-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 			<i class="mdi mdi-magnify"></i>Advanced Search
 			</button>
 		</p>
 		
-		<div class="collapse table-responsive" id="collapseExample">
+		<div class="collapse table-responsive box-shadow-delayed py-3 px-2" id="collapseExample">
 	  		<table style="width:90%;" class="table table-noborder table-sm m-auto">
 			    <tr>
 					<td width="8%" align="center">
@@ -31,7 +31,7 @@
 						</label>
 					</div>
 					</td>
-			        <td><input class="form-control" type="text" id="message" value="" onmouseup="$('message_').checked = true" style="width:  93%;"></td>
+			        <td><input class="form-control" type="text" id="message" value="" onmouseup="$('message_').checked = true" style="width:  100%;"></td>
 				</tr>
 			    <tr>
 			        <td align="center">
