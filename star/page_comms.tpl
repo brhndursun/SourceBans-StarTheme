@@ -4,7 +4,7 @@
 		<div class="card">
 			<div class="card-body">
 				<h3 class="lead">{$commenttype} Comment</h3>
-				<table align="center" border="0" style="border-collapse:collapse;" id="group.details" cellpadding="3" class="table">
+				<table id="group.details" class="table">
 					<tr>
 						<td valign="top">
 							<div class="rowdesc">
