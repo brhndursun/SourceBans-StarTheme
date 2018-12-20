@@ -49,7 +49,7 @@ Access Denied!
 											</td>
 											<td width="30%" rowspan="{if $protest.archiv == "2"}5{else}13{/if}" class="listtable_2">
 											<div class="ban-edit">
-												<ul class="list-arrow">
+												<ul class="list-arrow"  id="fix_banlinks">
 													<li>{$protest.protaddcomment}</li>
 												</ul>
 											</div>

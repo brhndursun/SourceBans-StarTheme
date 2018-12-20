@@ -55,7 +55,7 @@ Access Denied!
 											</td>
 											<td width="30%" rowspan="11" class="listtable_2">
 												<div class="ban-edit">
-													<ul class="list-arrow">
+													<ul class="list-arrow" id="fix_banlinks">
 														<li>{$sub.demo}</li>
 														<li>{$sub.subaddcomment}</li>
 													</ul>

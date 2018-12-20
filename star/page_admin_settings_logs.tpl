@@ -6,12 +6,12 @@
 				<p>Click on a row to see more details about the event.</p>
 				<br /><br />
 				{php} require (TEMPLATES_PATH . "/admin.log.search.php");{/php}
+				<div class="table-responsive" id="loglist">
 				<div class="col-12 my-2 text-xl-right text-lg-left">
 					<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
 						{$page_numbers}
 					</div>
 				</div>
-				<div class="table-responsive" id="loglist">
 					{literal}
 					<style>
 						.imgfix2 > img { width:16px !important; height:16px !important;}
@@ -67,9 +67,9 @@
 						</tr>
 						{/foreach}
 					</table>
-				</div>
 				<div class="col-12 my-2 text-xl-right text-lg-left">
 					<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">{$page_numbers}</div>
+				</div>
 				</div>
 			</div>
 		</div>

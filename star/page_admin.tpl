@@ -135,11 +135,11 @@
 				<div class="d-none d-md-flex align-items-top">
 					<div class="d-block text-center w-50">
 						<h1 class="font-weight-medium timer count-number mb-0" data-to="{$total_protests}" data-speed="1500"></h1>
-						<h5 class="font-weight-medium text-info">Pending</h5>
+						<h5 class="font-weight-medium text-info">Pending Protests</h5>
 					</div>
 					<div class="d-block text-center w-50">
 						<h1 class="font-weight-medium timer count-number ml-sm-0 mb-0" data-to="{$archived_protests}" data-speed="1500"></h1>
-						<h5 class="font-weight-medium text-info">Archived Blocked</h5>
+						<h5 class="font-weight-medium text-info">Archived Protests</h5>
 					</div>
 				</div>
 				<div class="d-flex d-md-none align-items-center">
@@ -160,7 +160,7 @@
 				<div class="d-none d-md-flex align-items-top">
 					<div class="d-block text-center w-50">
 						<h1 class="font-weight-medium timer count-number mb-0" data-to="{$total_submissions}" data-speed="1500"></h1>
-						<h5 class="font-weight-medium text-dark">Pending</h5>
+						<h5 class="font-weight-medium text-dark">Pending Submissions</h5>
 					</div>
 					<div class="d-block text-center w-50">
 						<h1 class="font-weight-medium timer count-number ml-sm-0 mb-0" data-to="{$archived_submissions}" data-speed="1500"></h1>

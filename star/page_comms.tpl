@@ -1,10 +1,11 @@
+{php} include("./themes/star/commBulkEdit.php");{/php}
 {if $comment}
 <div class="row">
 	<div class="col-lg-12 grid-margin">
 		<div class="card">
 			<div class="card-body">
 				<h3 class="lead">{$commenttype} Comment</h3>
-				<table id="group.details" class="table">
+				<table align="center" border="0" style="border-collapse:collapse;" id="group.details" cellpadding="3" class="table">
 					<tr>
 						<td valign="top">
 							<div class="rowdesc">
@@ -75,21 +76,47 @@
 				<div id="banlist" class="table-responsive">
 					<div class="col-12 my-2 text-xl-right text-lg-left">
 						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
-							{$ban_nav}
+							{$ban_nav|replace:'|':''}  {if $view_bans} 
+							<button type="button" class="btn btn-outline-primary btn-rounded btn-fw" style="height:24px;padding: 2px 10px; min-width:85px;" 
+								onclick="TickSelectAll();return false;" title="Select All" name="tickswitchlink" id="tickswitchlink">Select All</button>
+							{/if}
+							{if $general_unban || $can_delete}
+							<select name="bulk_action" id="bulk_action" onchange="BulkEdit(this,'{$admin_postkey}');" class="btn btn-outline-primary btn-rounded btn-fw"
+								style="min-width: auto; height: 24px; padding: 0px 12px;">
+								<option value="-1">Action</option>
+								{if $general_unban}
+								<option value="CU">Unblock</option>
+								{/if}
+								{if $can_delete}
+								<option value="CD">Delete</option>
+								{/if}
+							</select>
+							{/if}
 						</div>
 					</div>
 					<table class="table table-hover tbl-sm">
 						<thead>
 							<tr>
-								<th width="12%">MOD/Type</th>
-								<th width="14%">Date</th>
-								<th>Player</th>
-								{if !$hideadminname}
-								<th width="20%">Admin</th>
+								{if $view_bans}
+								<th>
+									<div class="ok" style="display:none;height:16px;width:16px;cursor:pointer;" title="Select All" name="tickswitch" id="tickswitch" onclick="TickSelectAll()"></div>
+									<button type="button" class="btn btn-icons btn-outline-primary" onclick="TickSelectAll()" style="width:20px;height:20px;padding:0px;">
+									<i class="mdi mdi-select-all"></i>
+									</button>
+								</th>
 								{/if}
-								<th width="10%">Length</th>
+								<th width="12%" class="text-center">MOD/Type</th>
+								<th width="14%" class="text-center">Date</th>
+								<th>Player</th>
+								{if $view_comments}
+								<th class="text-right">Previous Blocks</th>
+								{/if}
+								{if !$hideadminname}
+								<th width="15%">Admin</th>
+								{/if}
+								<th width="10%" class="text-right">Length</th>
 								{if $list_progress}
-								<th width="200px" class="text-center">Length</th>
+								<th width="200px" class="text-center">Remaining Progress</th>
 								{/if}
 							</tr>
 						</thead>
@@ -99,30 +126,39 @@
 						onclick="xajax_ServerHostPlayers({$ban.server_id}, 'id', 'host_{$ban.ban_id}');"
 						{/if}
 						>
+						{if $view_bans}
+						<td width="20px">
+							<div class="form-check" onclick="PreventClose(event);">
+								<label class="form-check-label pl-0">
+								<input id="chkb_{$smarty.foreach.banlist.index}" type="checkbox" name="chkb_{$smarty.foreach.banlist.index}" value="{$ban.ban_id}" vspace="5px" class="form-check-input"> &nbsp;
+								<i class="input-helper"></i></label>
+							</div>
+						</td>
+						{/if}
 						<td align="center" class="fix_icons img-ss">{$ban.mod_icon|replace:'images':'themes/star/images'|replace:'jpg':'png'}</td>
 						<td align="center">{$ban.ban_date}</td>
 						<td>
-							<div style="float:left;">
-								{if empty($ban.player)}
-								<i><font color="#677882">no nickname present</font></i>
-								{else}
-								{$ban.player|escape:'html'|stripslashes}
-								{/if}
-							</div>
-							<div style="float:right;">
-								{if $view_comments && $ban.commentdata != "None" && $ban.commentdata|@count > 0}
-								{$ban.commentdata|@count} <i class="mdi mdi-comment-text"></i>
-								{/if}
-								{if $view_bans}
-								{if strpos($ban.counts, "type_v") != false}
-								<i class="mdi mdi-microphone-off">Mute</i>
-								{/if}
-								{if strpos($ban.counts, "type_c") != false}
-								<i class="mdi mdi-pencil-off">Gag</i>
-								{/if}
-								{/if}
-							</div>
+							{if empty($ban.player)}
+							<i><font color="#677882">no nickname present</font></i>
+							{else}
+							{$ban.player|escape:'html'|stripslashes}
+							{/if}
 						</td>
+						{if $view_comments}
+						<td class="text-right">
+							{if $view_comments && $ban.commentdata != "None" && $ban.commentdata|@count > 0}
+							{$ban.commentdata|@count} <i class="mdi mdi-comment-text"></i>
+							{/if}
+							{if $view_bans}
+							{if strpos($ban.counts, "type_v") != false}
+							<i class="mdi mdi-microphone-off">Mute</i>
+							{/if}
+							{if strpos($ban.counts, "type_c") != false}
+							<i class="mdi mdi-pencil-off">Gag</i>
+							{/if}
+							{/if}
+						</td>
+						{/if}
 						{if !$hideadminname}
 						<td>
 							{if !empty($ban.admin)}
@@ -132,7 +168,7 @@
 							{/if}
 						</td>
 						{/if}
-						<td>
+						<td align="right">
 							{if $ban.banlength|strpos:"Unbanned" !== false}
 								<label class="badge badge-primary">
 							{elseif $ban.banlength|strpos:"Expired" !== false || $ban.banlength|strpos:"Deleted" !== false || $ban.banlength|strpos:"Expired" !== false}
@@ -371,7 +407,22 @@
 					</table>
 					<div class="col-12 my-2 text-xl-right text-lg-left">
 						<div id="banlist-nav" class="btn btn-inverse-light  btn-rounded btn-fw p-1 p-md-2 p-xl-2">
-							{$ban_nav}
+							{$ban_nav|replace:'|':''}  {if $view_bans} 
+							<button type="button" class="btn btn-outline-primary btn-rounded btn-fw" style="height:24px;padding: 2px 10px; min-width:85px;" 
+								onclick="TickSelectAll();return false;" title="Select All" name="tickswitchlink2" id="tickswitchlink2">Select All</button>
+							{/if}
+							{if $general_unban || $can_delete}
+							<select name="bulk_action" id="bulk_action" onchange="BulkEdit(this,'{$admin_postkey}');" class="btn btn-outline-primary btn-rounded btn-fw"
+								style="min-width: auto; height: 24px; padding: 0px 12px;">
+								<option value="-1">Action</option>
+								{if $general_unban}
+								<option value="CU">Unblock</option>
+								{/if}
+								{if $can_delete}
+								<option value="CD">Delete</option>
+								{/if}
+							</select>
+							{/if}
 						</div>
 					</div>
 				</div>

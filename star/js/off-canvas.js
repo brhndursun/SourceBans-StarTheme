@@ -43,14 +43,66 @@ for (i = 0; i < tw_obj.length; i++) {
 	tw.getElementsByTagName("a")[0].addClass("nav-link");
 	tw.getElementsByTagName("a")[1].addClass("nav-link");
 }
-function _TickSelectAll(){
-	TickSelectAll.call(this);
+var _TickSelectAll = TickSelectAll;
+TickSelectAll = function(str) {
+	_TickSelectAll();
 	if($('tickswitch').value==1) {
 		$('tickswitchlink2').setProperty('title','Deselect All');
 		$('tickswitchlink2').innerHTML = 'Deselect All';
 	} else {
 		$('tickswitchlink2').setProperty('title','Select All');
 		$('tickswitchlink2').innerHTML = 'Select All';
+	}
+}
+
+var _BulkEdit = BulkEdit;
+BulkEdit = function(action,bankey) {
+	_BulkEdit(action,bankey);
+	switch(option)
+	{
+		case "CU":
+			UnbanCommBulk(ids, bankey, "", "Bulk Unblock", "1");
+		break;
+		case "CD":
+			RemoveBlockBulk(ids, bankey, "", "Bulk Delete", "0");
+		break;
+	}
+}
+
+function UnbanCommBulk(id, key, page, name, popup)
+{
+	if(popup==1) {
+		ShowBox('Unblock Reason', '<b>Please give a short comment, why you are going to unmute or ungag those players!</b><br><textarea rows="3" cols="40" name="ureason" id="ureason" style="overflow:auto;"></textarea><br><div id="ureason.msg" class="badentry"></div>', 'blue', '', true);
+		$('dialog-control').setHTML('<input type="button" onclick="UnbanCommBulk(\''+id+'\', \''+key+'\', \''+page+'\', \''+addslashes(name.replace(/\'/g,'\\\''))+'\', \'0\');" name="uban" class="btn ok" onmouseover="ButtonOver(\'uban\')" onmouseout="ButtonOver(\'uban\')" id="uban" value="Unblock" />&nbsp;<input type="button" onclick="closeMsg(\'\');$(\'bulk_action\').options[0].selected=true;" name="astop" class="btn cancel" onmouseover="ButtonOver(\'astop\')" onmouseout="ButtonOver(\'astop\')" id="astop" value="Cancel" />');
+	} else if(popup==0) {
+		if(page != "")
+			var pagelink = page;
+		else
+			var pagelink = "";
+		reason = $('ureason').value;
+		if(reason == "") {
+			$('ureason.msg').setHTML("Please leave a comment.");
+			$('ureason.msg').setStyle('display', 'block');
+			return;
+		} else {
+			$('ureason.msg').setHTML('');
+			$('ureason.msg').setStyle('display', 'none');
+		}
+		window.location = "index.php?p=commslist" + pagelink + "&a=bulkunblock&id="+ id +"&key="+ key +"&ureason="+ reason;
+	}
+}
+
+function RemoveBlockBulk(id, key, page, name, confirm)
+{
+	if(confirm==0) {
+		ShowBox('Delete Block', 'Are you sure you want to delete the blocks for those players?', 'blue', '', true);
+		$('dialog-control').setHTML('<input type="button" onclick="RemoveBlockBulk(\''+id+'\', \''+key+'\', \''+page+'\', \''+addslashes(name.replace(/\'/g,'\\\''))+'\', \'1\');" name="rban" class="btn ok" onmouseover="ButtonOver(\'rban\')" onmouseout="ButtonOver(\'rban\')" id="rban" value="Remove Block" />&nbsp;<input type="button" onclick="closeMsg(\'\');$(\'bulk_action\').options[0].selected=true;" name="astop" class="btn cancel" onmouseover="ButtonOver(\'astop\')" onmouseout="ButtonOver(\'astop\')" id="astop" value="Cancel" />');
+	} else if(confirm==1) {
+		if(page != "")
+			var pagelink = page;
+		else
+			var pagelink = "";
+		window.location = "index.php?p=commslist" + pagelink + "&a=bulkdelete&id="+ id +"&key="+ key;
 	}
 }
 //Prevent Closing when checkbox checked

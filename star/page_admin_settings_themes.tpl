@@ -10,44 +10,48 @@
                      {literal}
                      <style>.imgfix > img { width:250px !important; height:170px !important;}</style>
                      {/literal}
-                     <table class="table table-sm">
-                        <tr>
-                           <td rowspan="8" id="current-theme-screenshot" class="imgfix" style="width:260px;">{$theme_screenshot}</td>
-                           <td><b>Theme Author:</b></td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div id="theme.auth">{$theme_author}</div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                           <td><b>Theme Version:</b></td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div id="theme.vers">{$theme_version}</div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>&nbsp;</td>
-                        </tr>
-                        <tr>
-                           <td><b>Theme Link:</b></td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <div id="theme.link"><a href="{$theme_link}" target="_new">{$theme_link}</a></div>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td colspan="2" align="right">
-                              <div id="theme.apply"></div>
-                           </td>
-                        </tr>
-                     </table>
+                     <div class="row">
+                        <div class="col imgfix mx-auto" id="current-theme-screenshot" style="flex-grow: inherit !important;">{$theme_screenshot}</div>
+                        <div class="col">
+                           <div class="table-responsive align-items-start">
+                              <table class="table table-sm">
+                                 <tr>
+                                    <td><b>Theme Author:</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <div id="theme.auth">{$theme_author}</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>&nbsp;</td>
+                                 </tr>
+                                 <tr>
+                                    <td><b>Theme Version:</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <div id="theme.vers">{$theme_version}</div>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td>&nbsp;</td>
+                                 </tr>
+                                 <tr>
+                                    <td><b>Theme Link:</b></td>
+                                 </tr>
+                                 <tr>
+                                    <td>
+                                       <div id="theme.link"><a href="{$theme_link}" target="_new">{$theme_link}</a></div>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                           <div id="theme.apply" class="text-right my-3">
+                              <input type="button" class="btn secondary " disabled value="Apply Theme">
+                           </div>
+                        </div>
+                     </div>
                   </div>
                </div>
                <div class="col-lg-6">

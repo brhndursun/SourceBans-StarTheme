@@ -52,7 +52,7 @@ Access Denied!
 														.list-arrow > li > a > img { width:16px; height:16px;}
 													</style>
 													{/literal}
-													<ul class="list-arrow">
+													<ul class="list-arrow"  id="fix_banlinks">
 														<li>{$protest.protaddcomment}</li>
 													</ul>
 												</div>

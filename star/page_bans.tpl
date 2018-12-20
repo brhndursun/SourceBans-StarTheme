@@ -103,11 +103,13 @@
 								<th width="14%" class="text-center">Date</th>
 								<th>Player</th>
 								{if !$hideadminname}
-								<th width="20%">Admin</th>
+								<th width="15%">Admin</th>
 								{/if}
-								<th width="10%" class="text-center">Length</th>
 								{if $list_progress}
-								<th width="200px" class="text-center">Length</th>
+								<th width="10%" class="text-right">Length</th>
+								<th width="200px" class="text-center">Remaining Progress</th>
+								{else}
+								<th width="10%" class="text-center">Length</th>
 								{/if}
 							</tr>
 						</thead>
@@ -129,7 +131,7 @@
 						{/if}
 						<td align="center" class="img-ss">{$ban.mod_icon|replace:'images':'themes/star/images'|replace:'jpg':'png'}</td>
 						<td align="center">{$ban.ban_date}</td>
-						<td >
+						<td>
 							<div style="float:left;">
 								{if empty($ban.player)}
 								<i><font color="#677882">no nickname present</font></i>
@@ -149,7 +151,7 @@
 							{/if}
 						</td>
 						{if !$hideadminname}
-						<td >
+						<td>
 							{if !empty($ban.admin)}
 							{$ban.admin|escape:'html'}
 							{else}
@@ -157,7 +159,8 @@
 							{/if}
 						</td>
 						{/if}
-						<td width="20%" align="center" class="{$ban.class}">
+
+						<td {if $list_progress} align="right" {else} align="center" {/if} class="{$ban.class}">
 							{if $ban.banlength|strpos:"Unbanned" !== false}
 								<label class="badge badge-primary">
 							{elseif $ban.banlength|strpos:"Expired" !== false || $ban.banlength|strpos:"Deleted" !== false || $ban.banlength|strpos:"Expired" !== false}
