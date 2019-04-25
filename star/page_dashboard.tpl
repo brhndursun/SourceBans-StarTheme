@@ -1,8 +1,7 @@
 <div class="row purchace-popup">
 	<div class="col-12">
-		<span class="d-block d-md-flex align-items-center">
+		<span class="d-block align-items-center">
 		{$dashboard_text}
-		<i class="mdi mdi-close popup-dismiss ml-auto d-none d-md-block"></i>
 		</span>
 	</div>
 </div>
