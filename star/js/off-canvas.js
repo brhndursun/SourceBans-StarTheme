@@ -128,7 +128,8 @@ if (document.getElementById("admin-page-content")) {
 			wrapper.addClass("table-responsive");
 			parent.insertBefore(wrapper,table_all[i]);
 			wrapper.appendChild(table_all[i]);
-			table_all[i].addClass("table table-striped");
+			if(table_all[i].innerHTML.indexOf('type="button"') == -1)
+				table_all[i].addClass("table table-striped");
 		}
 		if($("srootcheckbox"))
 			$("srootcheckbox").getElementsByTagName("td")[3].setAttribute("width","12%");
