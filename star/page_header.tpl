@@ -9,8 +9,8 @@
 		<script type="text/javascript" src="./scripts/sourcebans.js"></script>
 		<link href="themes/{$theme_name}/css/style.css" rel="stylesheet" type="text/css" />
 		<script src="themes/{$theme_name}/js/jqueryBase.js"></script>
-	<link rel="stylesheet" href="themes/{$theme_name}/css/aos.css" />
-	<script src="themes/{$theme_name}/js/aos.js"></script>
+		<link rel="stylesheet" href="themes/{$theme_name}/css/aos.css" />
+		<script src="themes/{$theme_name}/js/aos.js"></script>
 		<script type="text/javascript" src="./scripts/mootools.js"></script>
 		<script type="text/javascript" src="./scripts/contextMenoo.js"></script>
 		{$tiny_mce_js}
@@ -81,9 +81,16 @@
 							<div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
 								<a class="dropdown-item p-0">
 									<div class="d-flex border-bottom">
+										{php}
+										global $userbank;
+										if($userbank->is_admin()){
+										echo '
 										<div class="py-3 px-4 d-flex align-items-center justify-content-center">
 											<i class="mdi mdi-settings mr-0 text-gray"></i>
 										</div>
+										';
+										}
+										{/php}
 										<div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
 											<i class="mdi mdi-account-outline mr-0 text-gray"></i>
 										</div>
@@ -95,9 +102,12 @@
 										</div>
 									</div>
 								</a>
-								<a class="dropdown-item mt-2" href="index.php?p=admin">
+								{php}
+								if($userbank->is_admin()){
+								echo '<a class="dropdown-item mt-2" href="index.php?p=admin">
 								Admin Panel
-								</a>
+								</a>';}
+								{/php}
 								<a class="dropdown-item" href="index.php?p=account">
 								Manage Account
 								</a>
@@ -110,7 +120,7 @@
 							</div>
 						</li>
 						{else}
-							{php} include("./themes/star/photoNULL.php");{/php}
+						{php} include("./themes/star/photoNULL.php");{/php}
 						{/if}
 					</ul>
 					<button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -127,7 +137,6 @@
 				{if $logged_in}
 				<div class="user-wrapper">
 					<div class="profile-image">
-						
 						<img src='{php} include("./themes/star/photoGET.php");{/php}' alt="profile image">
 					</div>
 					<div class="text-wrapper">
