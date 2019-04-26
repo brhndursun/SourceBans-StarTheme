@@ -140,8 +140,8 @@
 					{sb_button text="Search" onclick="search_admins();" class="ok searchbtn" id="searchbtn" submit=false}
 				</div>
 			</div>
-</div>
-</div>
+		</div>
+	</div>
 </div>
 {$server_script}
 <script>InitAccordion('tr.sea_open', 'div.panel', 'mainwrapper');</script>

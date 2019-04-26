@@ -50,8 +50,8 @@ Access Denied!
 								</td>
 							</tr>
 						</table>
+					</form>
 				</div>
-				</form>
 				{if !$extreq}
 				<script type="text/javascript">
 					$('friendsname').disabled = true;
