@@ -35,10 +35,10 @@
 define('theme_name', "Star Theme");
  
 // Set the author of this theme here
-define('theme_author', "Distortion, Bootstrapdash");
+define('theme_author', "Distortion, BootstrapDash");
 
 // Set the version of the theme here
-define('theme_version', "1.5.4");
+define('theme_version', "1.5.5");
 
 // Set the link of the theme here
 define('theme_link', "https://www.bootstrapdash.com/product/star-admin-free/");
