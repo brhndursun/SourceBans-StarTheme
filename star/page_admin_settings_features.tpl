@@ -16,7 +16,7 @@
 										Make Export Bans Public
 									</div>
 								</td>
-								<td>
+								<td width="20%">
 									<div align="left">
 										<div class="form-check">
 											<label class="form-check-label">
@@ -135,6 +135,68 @@
 							</tr>
 						</table>
 					</form>
+				</div>
+			</div>
+			<div class="card-body">
+				<h3>Theme Features</h3>
+				<p>For more information or help regarding a certain subject move your mouse over the question mark</p>
+				<br /><br />
+				<div class="table-responsive">
+					<table class="table table-striped" id="group.features">
+						<tr>
+							<td valign="top">
+								<div class="rowdesc">
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="bottom" title="Check this box, if you want to enable the DARK theme."></i>
+									Enable Dark Mode
+								</div>
+							</td>
+							<td width="20%">
+								<div align="left">
+									<div class="form-check">
+										<label class="form-check-label">
+										<input id="enable_darktheme" type="checkbox" name="enable_darktheme" vspace="5px" class="form-check-input">&nbsp;
+										<i class="input-helper"></i></label>
+									</div>
+								</div>
+								<div id="enable_darktheme.msg" class="badentry"></div>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top">
+								<div class="rowdesc">
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for primary coloring"></i>
+									Primary Color
+								</div>
+							</td>
+							<td>
+								<div align="left">
+									<input type="color" name="colorPrimary" id="colorPrimary" value="#ff0000" onchange="document.documentElement.style.setProperty('--primary', this.value);">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top">
+								<div class="rowdesc">
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for navbar left side gradient coloring..."></i>
+									Navbar Gradient Color
+								</div>
+							</td>
+							<td>
+								<div align="left">
+									<input type="color" name="gradLeft" id="gradLeft" value="#ff0000" onchange="document.documentElement.style.setProperty('--nav-grad-left', this.value);">
+									<input type="color" name="gradRight" id="gradRight" value="#ff0000" onchange="document.documentElement.style.setProperty('--nav-grad-right', this.value);">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="center">
+								{php} include("./themes/star/customizeTheme.php");{/php}
+								<button name="themeChanges" class="btn ok" onclick="SaveThemeChanges()">Save Theme Changes</button>
+								&nbsp;
+								{sb_button text="Back" class="cancel" id="fback"}
+							</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>

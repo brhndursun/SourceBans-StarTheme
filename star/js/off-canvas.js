@@ -69,6 +69,12 @@ BulkEdit = function(action,bankey) {
 	}
 }
 
+var _ShowBox = ShowBox;
+ShowBox = function ShowBox(title, msg, color, redir, noclose)
+{
+	_ShowBox(title, msg.replace('<textarea','<textarea class="form-control"'), color, redir, noclose);
+}
+
 function UnbanCommBulk(id, key, page, name, popup)
 {
 	if(popup==1) {
@@ -321,4 +327,15 @@ for (i = 0; i < all_os.length; i++) {
 			this.innerHTML = this.innerHTML.replace("src=","class=\"img-ss\" src=");
 		}
 	}, false);
+}
+
+function SaveThemeChanges(){
+	var darkTheme = (document.getElementsByName('enable_darktheme')[0].checked ? 1 : 0);
+	var colorPrimary = document.getElementsByName('colorPrimary')[0].value.substring(1);
+	var gradLeft = document.getElementsByName('gradLeft')[0].value.substring(1);
+	var gradRight = document.getElementsByName('gradRight')[0].value.substring(1);
+	if(window.location.href.indexOf("gradLeft") != -1 || window.location.href.indexOf("gradRight") != -1)
+		window.location = window.location.pathname+"?p=admin&c=settings#^3";
+	else
+		window.location = window.location.href.replace("?","?darkTheme="+darkTheme+"&colorPrimary="+colorPrimary+"&gradLeft="+gradLeft+"&gradRight="+gradRight+"&");
 }

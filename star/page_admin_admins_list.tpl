@@ -42,8 +42,8 @@ Access Denied
 											<td width="30%">Action</td>
 										</tr>
 										<tr align="left">
-											<td style="vertical-align:top !important;">{$admin.server_flag_string|replace:"&bull;":"<span style=\"color:#1b75d1;\">&bull;</span>"}</td>
-											<td style="vertical-align:top !important;">{$admin.web_flag_string|replace:"&bull;":"<span style=\"color:#1b75d1;\">&bull;</span>"}</td>
+											<td style="vertical-align:top !important;">{$admin.server_flag_string|replace:"&bull;":"<span style=\"color:var(--primary);\">&bull;</span>"|replace:"#1b75d1":"var(--primary)"}</td>
+											<td style="vertical-align:top !important;">{$admin.web_flag_string|replace:"&bull;":"<span style=\"color:var(--primary);\">&bull;</span>"|replace:"#1b75d1":"var(--primary)"}</td>
 											<td width="30%" style="vertical-align:top !important;">
 												<div class="ban-edit">
 													{literal}

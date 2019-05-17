@@ -8,6 +8,9 @@
 		<link rel="stylesheet" href="themes/{$theme_name}/css/materialdesign/css/materialdesignicons.min.css">
 		<script type="text/javascript" src="./scripts/sourcebans.js"></script>
 		<link href="themes/{$theme_name}/css/style.css" rel="stylesheet" type="text/css" />
+		<style>
+			{php} include("./themes/star/css/customized.php");{/php}
+		</style>
 		<script src="themes/{$theme_name}/js/jqueryBase.js"></script>
 		<link rel="stylesheet" href="themes/{$theme_name}/css/aos.css" />
 		<script src="themes/{$theme_name}/js/aos.js"></script>
