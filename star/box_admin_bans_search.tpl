@@ -48,7 +48,7 @@
 					</label>
 				</div>
 				<div class="col-sm-9">
-					<input class="form-control" type="text" id="ip_" value="" onmouseup="$('ip_').checked = true">
+					<input class="form-control" type="text" id="ip" value="" onmouseup="$('ip_').checked = true">
 				</div>
 			</div>
 			{/if}
