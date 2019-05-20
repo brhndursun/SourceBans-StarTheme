@@ -345,16 +345,16 @@ function SaveThemeChanges(){
 		window.location = window.location.pathname+"?p=admin&c=settings#^3";
 	}else{
 		var color = "?darkTheme="+darkTheme;
-		color += "?colorPrimary="+colorPrimary;
-		color += "?colorSecondary="+colorSecondary;
-		color += "?colorSuccess="+colorSuccess;
-		color += "?colorInfo="+colorInfo;
-		color += "?colorWarning="+colorWarning;
-		color += "?colorDanger="+colorDanger;
-		color += "?colorLight="+colorLight;
-		color += "?colorDark="+colorDark;
-		color += "?gradLeft="+gradLeft;
-		color += "?gradRight="+gradRight;
+		color += "&colorPrimary="+colorPrimary;
+		color += "&colorSecondary="+colorSecondary;
+		color += "&colorSuccess="+colorSuccess;
+		color += "&colorInfo="+colorInfo;
+		color += "&colorWarning="+colorWarning;
+		color += "&colorDanger="+colorDanger;
+		color += "&colorLight="+colorLight;
+		color += "&colorDark="+colorDark;
+		color += "&gradLeft="+gradLeft;
+		color += "&gradRight="+gradRight;
 		color += "&";
 		window.location = window.location.href.replace("?",color);
 	}
