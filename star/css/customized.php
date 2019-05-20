@@ -75,13 +75,28 @@ function hextocontrast($hex) {
 		return $contrastRatio = (int)(($L2 + 0.05) / ($L1 + 0.05));
 	}
 }
+
 $colorPrimary= ($GLOBALS['config']['starTheme.colorPrimary'] == '' ? '#308ee0' : $GLOBALS['config']['starTheme.colorPrimary']);
+$colorSecondary= ($GLOBALS['config']['starTheme.colorSecondary'] == '' ? '#e5e5e5' : $GLOBALS['config']['starTheme.colorSecondary']);
+$colorSuccess= ($GLOBALS['config']['starTheme.colorSuccess'] == '' ? '#00ce68' : $GLOBALS['config']['starTheme.colorSuccess']);
+$colorInfo= ($GLOBALS['config']['starTheme.colorInfo'] == '' ? '#8862e0' : $GLOBALS['config']['starTheme.colorInfo']);
+$colorWarning= ($GLOBALS['config']['starTheme.colorWarning'] == '' ? '#ffaf00' : $GLOBALS['config']['starTheme.colorWarning']);
+$colorDanger= ($GLOBALS['config']['starTheme.colorDanger'] == '' ? '#e65251' : $GLOBALS['config']['starTheme.colorDanger']);
+$colorLight= ($GLOBALS['config']['starTheme.colorLight'] == '' ? '#f3f5f6' : $GLOBALS['config']['starTheme.colorLight']);
+$colorDark= ($GLOBALS['config']['starTheme.colorDark'] == '' ? '#424964' : $GLOBALS['config']['starTheme.colorDark']);
 $gradLeft= ($GLOBALS['config']['starTheme.gradLeft'] == '' ? '#00e4d0' : $GLOBALS['config']['starTheme.gradLeft']);
 $gradRight= ($GLOBALS['config']['starTheme.gradRight'] == '' ? '#5983e8' : $GLOBALS['config']['starTheme.gradRight']);
 
 ?>
 :root {
   --primary:<?php echo $colorPrimary; ?>;
+  --secondary:<?php echo $colorSecondary; ?>;
+  --success:<?php echo $colorSuccess; ?>;
+  --info:<?php echo $colorInfo; ?>;
+  --warning:<?php echo $colorWarning; ?>;
+  --danger:<?php echo $colorDanger; ?>;
+  --light:<?php echo $colorLight; ?>;
+  --dark:<?php echo $colorDark; ?>;
   --main-bg:#272c33;
   --main-color:#929ca0;
   --main-border:#3e4356;
@@ -110,12 +125,6 @@ body *:not([class*="btn"]){
 body{
 	color:var(--main-color);
 	background-color:var(--main-bg);
-}
-.footer a,a{
-	color:var(--primary);
-}
-a:hover{
-	color:var(--link-hover);
 }
 
 .navbar.default-layout .navbar-brand-wrapper{
@@ -229,10 +238,21 @@ body .dropdown-menu *, body .dropdown-menu {
   box-shadow: 0px 0px 20px 14px <?php echo hextorgba($colorPrimary,0.1); ?>;
 }
 
-<?php } ?>
+a:hover{
+	color:var(--link-hover);
+}
+<?php }else{ ?>
 
+a:hover{
+	color:<?php echo sass_darken($colorPrimary,10);?>;
+}
+
+<?php } ?>
+.footer a,a{
+	color:var(--primary);
+}
 .nav-pills.nav-pills-primary .nav-item .nav-link.active, .nav-pills.nav-pills-primary .nav-item .nav-link.active:focus, .nav-pills.nav-pills-primary .nav-item .nav-link:hover{
-	color:<?php echo (hextocontrast($colorPrimary)>5 ? "var(--wrapper-bg)" : "#ffffff")?>;
+	color:<?php echo (hextocontrast($colorPrimary)>7 ? "var(--wrapper-bg)" : "#ffffff")?>;
 }
 .form-check .form-check-label input:checked + .input-helper:after{
 	color:var(--primary);
@@ -248,58 +268,93 @@ body .dropdown-menu *, body .dropdown-menu {
 }
 /* Additional Fix For Buttons And More */
 
-/*Color Primary*/
+<?php GenerateColors("primary", $colorPrimary);?>
+<?php GenerateColors("secondary", $colorSecondary);?>
+<?php GenerateColors("success", $colorSuccess);?>
+<?php GenerateColors("info", $colorInfo);?>
+<?php GenerateColors("warning", $colorWarning);?>
+<?php GenerateColors("danger", $colorDanger);?>
+<?php GenerateColors("light", $colorLight);?>
+<?php GenerateColors("dark", $colorDark);?>
 
-.btn-primary:focus,
-.btn-primary.focus,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.btn-primary:not(:disabled):not(.disabled).active:focus,
-.show>.btn-primary.dropdown-toggle:focus,
-.btn-outline-primary:focus,
-.btn-outline-primary.focus,
-.btn-outline-primary:not(:disabled):not(.disabled):active:focus,
-.btn-outline-primary:not(:disabled):not(.disabled).active:focus,
-.show>.btn-outline-primary.dropdown-toggle:focus {
-	box-shadow: 0 0 0 0.2rem <?php echo hextorgba($colorPrimary,0.5); ?>;
-}
-.nav-pills.nav-pills-primary .nav-item .nav-link.active,
-.nav-pills.nav-pills-primary .nav-item .nav-link.active:focus,
-.nav-pills.nav-pills-primary .nav-item .nav-link:hover {
-	box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px <?php echo hextorgba($colorPrimary,0.4); ?>;
-}
 
-.bg-inverse-primary {
-	background: <?php echo hextorgba($colorPrimary,0.2); ?>;
-}
+<?php 
 
-.badge-inverse-primary {
-	background: <?php echo hextorgba($colorPrimary,0.3); ?>;
+function GenerateColors($name, $color){
+?>
+.btn-<?php echo $name;?>:focus,
+.btn-<?php echo $name;?>.focus,
+.btn-<?php echo $name;?>:not(:disabled):not(.disabled):active:focus,
+.btn-<?php echo $name;?>:not(:disabled):not(.disabled).active:focus,
+.show>.btn-<?php echo $name;?>.dropdown-toggle:focus,
+.btn-outline-<?php echo $name;?>:focus,
+.btn-outline-<?php echo $name;?>.focus,
+.btn-outline-<?php echo $name;?>:not(:disabled):not(.disabled):active:focus,
+.btn-outline-<?php echo $name;?>:not(:disabled):not(.disabled).active:focus,
+.show>.btn-outline-<?php echo $name;?>.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.2rem <?php echo hextorgba($color,0.5); ?>;
 }
-
-.btn-inverse-primary {
-	background-color: <?php echo hextorgba($colorPrimary,0.2); ?>;
-	border-color: <?php echo hextorgba($colorPrimary,0); ?>;
+.btn-<?php echo $name;?>:hover {
+    background-color: <?php echo sass_darken($color,15); ?>;
+    border-color: <?php echo sass_darken($color,18); ?>;
 }
-
-.btn-inverse-primary.focus,
-.btn-inverse-primary:focus {
-	box-shadow: 0 0 0 3px <?php echo hextorgba($colorPrimary,0.5); ?>;
+.btn-<?php echo $name;?>:not(:disabled):not(.disabled):active,
+.btn-<?php echo $name;?>:not(:disabled):not(.disabled).active,
+.show > .btn-<?php echo $name;?>.dropdown-toggle {
+	background-color: <?php echo sass_darken($color,18); ?>;
+	border-color: <?php echo sass_darken($color,22); ?>;
 }
-
-.btn-inverse-outline-primary {
-	border-color: <?php echo hextorgba($colorPrimary,0.2); ?>;
-}
-
-.btn-inverse-outline-primary:hover {
-	background-color: <?php echo hextorgba($colorPrimary,0.2); ?>;
-	border-color: <?php echo hextorgba($colorPrimary,0.2); ?>;
+.nav-pills.nav-pills-<?php echo $name;?> .nav-item .nav-link.active,
+.nav-pills.nav-pills-<?php echo $name;?> .nav-item .nav-link.active:focus,
+.nav-pills.nav-pills-<?php echo $name;?> .nav-item .nav-link:hover {
+	box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px <?php echo hextorgba($color,0.4); ?>;
 }
 
-.btn-inverse-outline-primary.focus,
-.btn-inverse-outline-primary:focus {
-	box-shadow: 0 0 0 3px <?php echo hextorgba($colorPrimary,0.5); ?>;
+.bg-inverse-<?php echo $name;?> {
+	background: <?php echo hextorgba($color,0.2); ?>;
 }
 
-.card-inverse-primary {
-	background: <?php echo hextorgba($colorPrimary,0.2); ?>;
+.badge-inverse-<?php echo $name;?> {
+	background: <?php echo hextorgba($color,0.3); ?>;
 }
+
+.btn-inverse-<?php echo $name;?> {
+	background-color: <?php echo hextorgba($color,0.2); ?>;
+	border-color: <?php echo hextorgba($color,0); ?>;
+}
+
+.btn-inverse-<?php echo $name;?>.focus,
+.btn-inverse-<?php echo $name;?>:focus {
+	box-shadow: 0 0 0 3px <?php echo hextorgba($color,0.5); ?>;
+}
+
+.btn-inverse-outline-<?php echo $name;?> {
+	border-color: <?php echo hextorgba($color,0.2); ?>;
+}
+
+.btn-inverse-outline-<?php echo $name;?>:hover {
+	background-color: <?php echo hextorgba($color,0.2); ?>;
+	border-color: <?php echo hextorgba($color,0.2); ?>;
+}
+
+.btn-inverse-outline-<?php echo $name;?>.focus,
+.btn-inverse-outline-<?php echo $name;?>:focus {
+	box-shadow: 0 0 0 3px <?php echo hextorgba($color,0.5); ?>;
+}
+
+.card-inverse-<?php echo $name;?> {
+	background: <?php echo hextorgba($color,0.2); ?>;
+}
+
+.badge-<?php echo $name;?>[href]:hover, .badge-<?php echo $name;?>[href]:focus {
+    background-color: 
+}
+
+a.bg-<?php echo $name;?>:hover, a.bg-<?php echo $name;?>:focus,
+button.bg-<?php echo $name;?>:hover,
+button.bg-<?php echo $name;?>:focus {
+  background-color: <?php echo sass_darken($color,18); ?> !important; }
+a.text-<?php echo $name;?>:hover, a.text-<?php echo $name;?>:focus {
+  color: <?php echo sass_darken($color,18); ?> !important; }
+
+<?php } ?>

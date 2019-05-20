@@ -79,7 +79,7 @@ function UnbanCommBulk(id, key, page, name, popup)
 {
 	if(popup==1) {
 		ShowBox('Unblock Reason', '<b>Please give a short comment, why you are going to unmute or ungag those players!</b><br><textarea rows="3" cols="40" name="ureason" id="ureason" style="overflow:auto;"></textarea><br><div id="ureason.msg" class="badentry"></div>', 'blue', '', true);
-		$('dialog-control').setHTML('<input type="button" onclick="UnbanCommBulk(\''+id+'\', \''+key+'\', \''+page+'\', \''+addslashes(name.replace(/\'/g,'\\\''))+'\', \'0\');" name="uban" class="btn ok" onmouseover="ButtonOver(\'uban\')" onmouseout="ButtonOver(\'uban\')" id="uban" value="Unblock" />&nbsp;<input type="button" onclick="closeMsg(\'\');$(\'bulk_action\').options[0].selected=true;" name="astop" class="btn cancel" onmouseover="ButtonOver(\'astop\')" onmouseout="ButtonOver(\'astop\')" id="astop" value="Cancel" />');
+		$('dialog-control').setHTML('<input type="button" onclick="UnbanCommBulk(\''+id+'\', \''+key+'\', \''+page+'\', \''+addslashes(name.replace(/\'/g,'\\\''))+'\', \'0\');" name="uban" class="btn ok btn-success" onmouseover="ButtonOver(\'uban\')" onmouseout="ButtonOver(\'uban\')" id="uban" value="Unblock" />&nbsp;<input type="button" onclick="closeMsg(\'\');$(\'bulk_action\').options[0].selected=true;" name="astop" class="btn cancel btn-danger" onmouseover="ButtonOver(\'astop\')" onmouseout="ButtonOver(\'astop\')" id="astop" value="Cancel" />');
 	} else if(popup==0) {
 		if(page != "")
 			var pagelink = page;
@@ -102,7 +102,7 @@ function RemoveBlockBulk(id, key, page, name, confirm)
 {
 	if(confirm==0) {
 		ShowBox('Delete Block', 'Are you sure you want to delete the blocks for those players?', 'blue', '', true);
-		$('dialog-control').setHTML('<input type="button" onclick="RemoveBlockBulk(\''+id+'\', \''+key+'\', \''+page+'\', \''+addslashes(name.replace(/\'/g,'\\\''))+'\', \'1\');" name="rban" class="btn ok" onmouseover="ButtonOver(\'rban\')" onmouseout="ButtonOver(\'rban\')" id="rban" value="Remove Block" />&nbsp;<input type="button" onclick="closeMsg(\'\');$(\'bulk_action\').options[0].selected=true;" name="astop" class="btn cancel" onmouseover="ButtonOver(\'astop\')" onmouseout="ButtonOver(\'astop\')" id="astop" value="Cancel" />');
+		$('dialog-control').setHTML('<input type="button" onclick="RemoveBlockBulk(\''+id+'\', \''+key+'\', \''+page+'\', \''+addslashes(name.replace(/\'/g,'\\\''))+'\', \'1\');" name="rban" class="btn ok btn-success" onmouseover="ButtonOver(\'rban\')" onmouseout="ButtonOver(\'rban\')" id="rban" value="Remove Block" />&nbsp;<input type="button" onclick="closeMsg(\'\');$(\'bulk_action\').options[0].selected=true;" name="astop" class="btn cancel btn-danger" onmouseover="ButtonOver(\'astop\')" onmouseout="ButtonOver(\'astop\')" id="astop" value="Cancel" />');
 	} else if(confirm==1) {
 		if(page != "")
 			var pagelink = page;
@@ -332,10 +332,30 @@ for (i = 0; i < all_os.length; i++) {
 function SaveThemeChanges(){
 	var darkTheme = (document.getElementsByName('enable_darktheme')[0].checked ? 1 : 0);
 	var colorPrimary = document.getElementsByName('colorPrimary')[0].value.substring(1);
+	var colorSecondary = document.getElementsByName('colorSecondary')[0].value.substring(1);
+	var colorSuccess = document.getElementsByName('colorSuccess')[0].value.substring(1);
+	var colorInfo = document.getElementsByName('colorInfo')[0].value.substring(1);
+	var colorWarning = document.getElementsByName('colorWarning')[0].value.substring(1);
+	var colorDanger = document.getElementsByName('colorDanger')[0].value.substring(1);
+	var colorLight = document.getElementsByName('colorLight')[0].value.substring(1);
+	var colorDark = document.getElementsByName('colorDark')[0].value.substring(1);
 	var gradLeft = document.getElementsByName('gradLeft')[0].value.substring(1);
 	var gradRight = document.getElementsByName('gradRight')[0].value.substring(1);
-	if(window.location.href.indexOf("gradLeft") != -1 || window.location.href.indexOf("gradRight") != -1)
+	if(window.location.href.indexOf("gradLeft") != -1 || window.location.href.indexOf("gradRight") != -1){
 		window.location = window.location.pathname+"?p=admin&c=settings#^3";
-	else
-		window.location = window.location.href.replace("?","?darkTheme="+darkTheme+"&colorPrimary="+colorPrimary+"&gradLeft="+gradLeft+"&gradRight="+gradRight+"&");
+	}else{
+		var color = "?darkTheme="+darkTheme;
+		color += "?colorPrimary="+colorPrimary;
+		color += "?colorSecondary="+colorSecondary;
+		color += "?colorSuccess="+colorSuccess;
+		color += "?colorInfo="+colorInfo;
+		color += "?colorWarning="+colorWarning;
+		color += "?colorDanger="+colorDanger;
+		color += "?colorLight="+colorLight;
+		color += "?colorDark="+colorDark;
+		color += "?gradLeft="+gradLeft;
+		color += "?gradRight="+gradRight;
+		color += "&";
+		window.location = window.location.href.replace("?",color);
+	}
 }

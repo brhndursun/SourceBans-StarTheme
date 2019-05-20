@@ -130,7 +130,7 @@
 								<td colspan="2" align="center">
 									{sb_button text="Save Changes" class="ok" id="fsettings" submit=true}
 									&nbsp;
-									{sb_button text="Back" class="cancel" id="fback"}
+									{sb_button text="Back" class="cancel btn-danger" id="fback"}
 								</td>
 							</tr>
 						</table>
@@ -150,6 +150,7 @@
 									Enable Dark Mode
 								</div>
 							</td>
+							<td width="20%"></td>
 							<td width="20%">
 								<div align="left">
 									<div class="form-check">
@@ -164,36 +165,185 @@
 						<tr>
 							<td valign="top">
 								<div class="rowdesc">
-									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for primary coloring"></i>
-									Primary Color
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for navbar left side gradient coloring..."></i>
+									Navbar Gradient Color
+								</div>
+							</td>
+							<td>
+								<div align="right">
+									<input type="text" name="i_gradRight" id="i_gradRight" class="form-control text-center form-control-sm" style="float:right; width:80px;" onchange="SyncInputs(this.value,this.name,'--nav-grad-left')">
+									<input type="text" name="i_gradLeft" id="i_gradLeft" class="form-control text-center form-control-sm"  style="float:right; width:80px;" onchange="SyncInputs(this.value,this.name,'--nav-grad-right')">
 								</div>
 							</td>
 							<td>
 								<div align="left">
-									<input type="color" name="colorPrimary" id="colorPrimary" value="#ff0000" onchange="document.documentElement.style.setProperty('--primary', this.value);">
+									<input type="color" name="gradLeft" id="gradLeft" value="#ff0000" onchange="SyncInputs(this.value,this.name,'--nav-grad-left')">
+									<input type="color" name="gradRight" id="gradRight" value="#ff0000" onchange="SyncInputs(this.value,this.name,'--nav-grad-right')">
 								</div>
 							</td>
 						</tr>
 						<tr>
 							<td valign="top">
 								<div class="rowdesc">
-									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for navbar left side gradient coloring..."></i>
-									Navbar Gradient Color
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for primary coloring"></i>
+									Primary Color
+								</div>
+							</td>
+							<td>
+								<div align="right">
+									<input type="text" name="i_colorPrimary" id="i_colorPrimary" class="form-control text-center form-control-sm" style="width:160px;" onchange="SyncInputs(this.value,this.name,'--primary')">
 								</div>
 							</td>
 							<td>
 								<div align="left">
-									<input type="color" name="gradLeft" id="gradLeft" value="#ff0000" onchange="document.documentElement.style.setProperty('--nav-grad-left', this.value);">
-									<input type="color" name="gradRight" id="gradRight" value="#ff0000" onchange="document.documentElement.style.setProperty('--nav-grad-right', this.value);">
+									<input type="color" name="colorPrimary" id="colorPrimary" value="#ff0000" onchange="SyncInputs(this.value,this.name,'--nav-primary')">
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2" align="center">
+							<td valign="top">
+								<div class="rowdesc">
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for primary coloring"></i>
+									Secondary Color
+								</div>
+							</td>
+							<td>
+								<div align="right">
+									<input type="text" name="i_colorSecondary" id="i_colorSecondary" class="form-control text-center form-control-sm" style="width:160px;" onchange="SyncInputs(this.value,this.name,'--nav-secondary')">
+								</div>
+							</td>
+							<td>
+								<div align="left">
+									<input type="color" name="colorSecondary" id="colorSecondary" value="#ff0000" onchange="SyncInputs(this.value,this.name,'--nav-secondary')">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top">
+								<div class="rowdesc">
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for primary coloring"></i>
+									Success Color
+								</div>
+							</td>
+							<td>
+								<div align="right">
+									<input type="text" name="i_colorSuccess" id="i_colorSuccess" class="form-control text-center form-control-sm" style="width:160px;" onchange="SyncInputs(this.value,this.name,'--nav-success')">
+								</div>
+							</td>
+							<td>
+								<div align="left">
+									<input type="color" name="colorSuccess" id="colorSuccess" value="#ff0000" onchange="SyncInputs(this.value,this.name,'--nav-success')">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top">
+								<div class="rowdesc">
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for primary coloring"></i>
+									Info Color
+								</div>
+							</td>
+							<td>
+								<div align="right">
+									<input type="text" name="i_colorInfo" id="i_colorInfo" class="form-control text-center form-control-sm" style="width:160px;" onchange="SyncInputs(this.value,this.name,'--nav-info')">
+								</div>
+							</td>
+							<td>
+								<div align="left">
+									<input type="color" name="colorInfo" id="colorInfo" value="#ff0000" onchange="SyncInputs(this.value,this.name,'--nav-info')">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top">
+								<div class="rowdesc">
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for primary coloring"></i>
+									Warning Color
+								</div>
+							</td>
+							<td>
+								<div align="right">
+									<input type="text" name="i_colorWarning" id="i_colorWarning" class="form-control text-center form-control-sm" style="width:160px;" onchange="SyncInputs(this.value,this.name,'--nav-warning')">
+								</div>
+							</td>
+							<td>
+								<div align="left">
+									<input type="color" name="colorWarning" id="colorWarning" value="#ff0000" onchange="SyncInputs(this.value,this.name,'--nav-warning')">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top">
+								<div class="rowdesc">
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for primary coloring"></i>
+									Danger Color
+								</div>
+							</td>
+							<td>
+								<div align="right">
+									<input type="text" name="i_colorDanger" id="i_colorDanger" class="form-control text-center form-control-sm" style="width:160px;" onchange="SyncInputs(this.value,this.name,'--nav-danger')">
+								</div>
+							</td>
+							<td>
+								<div align="left">
+									<input type="color" name="colorDanger" id="colorDanger" value="#ff0000" onchange="SyncInputs(this.value,this.name,'--nav-danger')">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top">
+								<div class="rowdesc">
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for primary coloring"></i>
+									Light Color
+								</div>
+							</td>
+							<td>
+								<div align="right">
+									<input type="text" name="i_colorLight" id="i_colorLight" class="form-control text-center form-control-sm" style="width:160px;" onchange="SyncInputs(this.value,this.name,'--nav-light')">
+								</div>
+							</td>
+							<td>
+								<div align="left">
+									<input type="color" name="colorLight" id="colorLight" value="#ff0000" onchange="SyncInputs(this.value,this.name,'--nav-light')">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td valign="top">
+								<div class="rowdesc">
+									<i class="text-primary mdi mdi-help-circle" data-toggle="tooltip" data-placement="top" title="This color is for primary coloring"></i>
+									Dark Color
+								</div>
+							</td>
+							<td>
+								<div align="right">
+									<input type="text" name="i_colorDark" id="i_colorDark" class="form-control text-center form-control-sm" style="width:160px;" onchange="SyncInputs(this.value,this.name,'--nav-dark')">
+								</div>
+							</td>
+							<td>
+								<div align="left">
+									<input type="color" name="colorDark" id="colorDark" value="#ff0000" onchange="SyncInputs(this.value,this.name,'--nav-dark')">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" align="center">
 								{php} include("./themes/star/customizeTheme.php");{/php}
 								<button name="themeChanges" class="btn ok" onclick="SaveThemeChanges()">Save Theme Changes</button>
 								&nbsp;
-								{sb_button text="Back" class="cancel" id="fback"}
+								{sb_button text="Back" class="cancel btn-danger" id="fback"}
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3" align="center">
+								<button class="btn btn-primary">Primary</button>
+								<button class="btn btn-secondary">Secondary</button>
+								<button class="btn btn-success">Success</button>
+								<button class="btn btn-info">Info</button>
+								<button class="btn btn-warning">Warning</button>
+								<button class="btn btn-danger">Danger</button>
+								<button class="btn btn-light">Light</button>
+								<button class="btn btn-dark">Dark</button>
 							</td>
 						</tr>
 					</table>

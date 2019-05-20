@@ -16200,8 +16200,6 @@ ul {
   font-size: 0.875rem; }
   .preview-list .preview-item:last-child {
     border-bottom: 0; }
-  .preview-list .preview-item:hover {
-    background: #f8f9fa; }
   .preview-list .preview-item .form-check {
     margin-top: 8px;
     margin-right: 1rem; }
