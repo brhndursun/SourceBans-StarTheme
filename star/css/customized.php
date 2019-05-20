@@ -47,35 +47,41 @@ function hextorgba($hex,$alpha){
 	$b = hexdec($split[2]);
 	return "rgb(" . $r . ", " . $g . ", " . $b . ", " . $alpha . ")";
 }
-function hextocontrast($hex) {
-	// hex RGB
-	$R1 = hexdec(substr($hex, 1, 2));
-	$G1 = hexdec(substr($hex, 3, 2));
-	$B1 = hexdec(substr($hex, 5, 2));
-
-	// Black RGB
-	$blackColor = "#000000";
-	$R2BlackColor = hexdec(substr($blackColor, 1, 2));
-	$G2BlackColor = hexdec(substr($blackColor, 3, 2));
-	$B2BlackColor = hexdec(substr($blackColor, 5, 2));
-
-	// Calc contrast ratio
-	$L1 = 0.2126 * pow($R1 / 255, 2.2) +
-	0.7152 * pow($G1 / 255, 2.2) +
-	0.0722 * pow($B1 / 255, 2.2);
-
-	$L2 = 0.2126 * pow($R2BlackColor / 255, 2.2) +
-	0.7152 * pow($G2BlackColor / 255, 2.2) +
-	0.0722 * pow($B2BlackColor / 255, 2.2);
-
-	$contrastRatio = 0;
-	if ($L1 > $L2) {
-		return $contrastRatio = (int)(($L1 + 0.05) / ($L2 + 0.05));
-	} else {
-		return $contrastRatio = (int)(($L2 + 0.05) / ($L1 + 0.05));
-	}
+function calculateColor($hex){
+	$whiteLum = calcLum($hex, "#FFFFFF");
+	$blackLum = calcLum($hex, "#383f48");
+	return ($whiteLum > $blackLum ? "#FFFFFF" : "#383F48");
 }
+function calcLum($hex,$text){
+	$R1 = hexdec(substr($hex, 1, 2));
+    $G1 = hexdec(substr($hex, 3, 2));
+    $B1 = hexdec(substr($hex, 5, 2));
 
+	$R2 = hexdec(substr($text, 1, 2));
+    $G2 = hexdec(substr($text, 3, 2));
+    $B2 = hexdec(substr($text, 5, 2));
+
+    $L1 = 0.2126 * pow($R1/255, 2.2) +
+          0.7152 * pow($G1/255, 2.2) +
+          0.0722 * pow($B1/255, 2.2);
+ 
+    $L2 = 0.2126 * pow($R2/255, 2.2) +
+          0.7152 * pow($G2/255, 2.2) +
+          0.0722 * pow($B2/255, 2.2);
+ 
+    if($L1 > $L2){
+        return ($L1+0.05) / ($L2+0.05);
+    }else{
+        return ($L2+0.05) / ($L1+0.05);
+    }
+}
+function usedarktext($hex) {
+	$r = hexdec(substr($hex, 1, 2));
+    $g = hexdec(substr($hex, 3, 2));
+    $b = hexdec(substr($hex, 5, 2));
+    $yiq = (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+    return ($yiq >= 128) ? true : false;
+}
 $colorPrimary= ($GLOBALS['config']['starTheme.colorPrimary'] == '' ? '#308ee0' : $GLOBALS['config']['starTheme.colorPrimary']);
 $colorSecondary= ($GLOBALS['config']['starTheme.colorSecondary'] == '' ? '#e5e5e5' : $GLOBALS['config']['starTheme.colorSecondary']);
 $colorSuccess= ($GLOBALS['config']['starTheme.colorSuccess'] == '' ? '#00ce68' : $GLOBALS['config']['starTheme.colorSuccess']);
@@ -86,7 +92,7 @@ $colorLight= ($GLOBALS['config']['starTheme.colorLight'] == '' ? '#f3f5f6' : $GL
 $colorDark= ($GLOBALS['config']['starTheme.colorDark'] == '' ? '#424964' : $GLOBALS['config']['starTheme.colorDark']);
 $gradLeft= ($GLOBALS['config']['starTheme.gradLeft'] == '' ? '#00e4d0' : $GLOBALS['config']['starTheme.gradLeft']);
 $gradRight= ($GLOBALS['config']['starTheme.gradRight'] == '' ? '#5983e8' : $GLOBALS['config']['starTheme.gradRight']);
-
+$wrapper_bg= "#383f48";
 ?>
 :root {
   --primary:<?php echo $colorPrimary; ?>;
@@ -108,7 +114,7 @@ $gradRight= ($GLOBALS['config']['starTheme.gradRight'] == '' ? '#5983e8' : $GLOB
   --nav-link-bg:none;
   --nav-link-bg-hover:none;
 
-  --wrapper-bg:#383f48;
+  --wrapper-bg:<?php echo $wrapper_bg; ?>;
 
   --breadcrumb-bg:#424964;
 
@@ -230,7 +236,7 @@ body .dropdown-menu *, body .dropdown-menu {
 	background-color: unset;
 }
 .navbar.default-layout{
-	background:linear-gradient(120deg, var(--nav-grad-left), var(--nav-grad-right));
+	background:linear-gradient(120deg, var(--nav-grad-left) 250px, var(--nav-grad-right));
 }
 
 #dialog-placement{
@@ -252,7 +258,7 @@ a:hover{
 	color:var(--primary);
 }
 .nav-pills.nav-pills-primary .nav-item .nav-link.active, .nav-pills.nav-pills-primary .nav-item .nav-link.active:focus, .nav-pills.nav-pills-primary .nav-item .nav-link:hover{
-	color:<?php echo (hextocontrast($colorPrimary)>7 ? "var(--wrapper-bg)" : "#ffffff")?>;
+	color:<?php echo calculateColor($colorPrimary)?>;
 }
 .form-check .form-check-label input:checked + .input-helper:after{
 	color:var(--primary);
@@ -294,7 +300,11 @@ function GenerateColors($name, $color){
 .show>.btn-outline-<?php echo $name;?>.dropdown-toggle:focus {
 	box-shadow: 0 0 0 0.2rem <?php echo hextorgba($color,0.5); ?>;
 }
+.btn.btn-<?php echo $name;?> {
+	color:<?php echo calculateColor($color);?>;
+}
 .btn-<?php echo $name;?>:hover {
+	color:<?php echo calculateColor(sass_darken($color,15));?>;
     background-color: <?php echo sass_darken($color,15); ?>;
     border-color: <?php echo sass_darken($color,18); ?>;
 }
@@ -347,7 +357,7 @@ function GenerateColors($name, $color){
 }
 
 .badge-<?php echo $name;?>[href]:hover, .badge-<?php echo $name;?>[href]:focus {
-    background-color: 
+    background-color: <?php echo sass_darken($color,18); ?> !important;
 }
 
 a.bg-<?php echo $name;?>:hover, a.bg-<?php echo $name;?>:focus,
