@@ -34,9 +34,9 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td>
-								{sb_button text="Send Email" onclick="$email_js" class="ok" id="aemail" submit=false}
+								{sb_button text="Send Email" onclick="$email_js" class="ok btn-success" id="aemail" submit=false}
 								&nbsp;
-								{sb_button text="Back" onclick="history.go(-1)" class="cancel" id="back" submit=false}
+								{sb_button text="Back" onclick="history.go(-1)" class="cancel btn-danger" id="back" submit=false}
 							</td>
 						</tr>
 					</table>

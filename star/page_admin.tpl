@@ -50,8 +50,8 @@
 </ul>
 <br>
 <div class="row">
-	<div class="col-md-4 grid-margin stretch-card" style="cursor:pointer;">
-		<div class="card aligner-wrapper">
+	<div class="col-md-4 grid-margin stretch-card">
+		<div class="card aligner-wrapper" style="cursor:pointer;">
 			<div class="card-body p-2 p-md-2 p-lg-3 p-xl-4">
 				<div class="absolute left top bottom h-100 v-strock-2 bg-success"></div>
 				<p class="text-muted mb-2">Version Information</p>
@@ -66,8 +66,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 grid-margin stretch-card" style="cursor:pointer;">
-		<div class="card aligner-wrapper">
+	<div class="col-md-4 grid-margin stretch-card">
+		<div class="card aligner-wrapper" style="cursor:pointer;">
 			<div class="card-body p-2 p-md-2 p-lg-3 p-xl-4">
 				<div class="absolute left top bottom h-100 v-strock-2 bg-primary"></div>
 				<p class="text-muted mb-2">Admin Information</p>
@@ -82,8 +82,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 grid-margin stretch-card" style="cursor:pointer;">
-		<div class="card aligner-wrapper">
+	<div class="col-md-4 grid-margin stretch-card">
+		<div class="card aligner-wrapper" style="cursor:pointer;">
 			<div class="card-body p-2 p-md-2 p-lg-3 p-xl-4">
 				<div class="absolute left top bottom h-100 v-strock-2 bg-warning"></div>
 				<p class="text-muted mb-2">Server Information</p>
@@ -98,8 +98,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 grid-margin stretch-card" style="cursor:pointer;">
-		<div class="card aligner-wrapper">
+	<div class="col-md-4 grid-margin stretch-card">
+		<div class="card aligner-wrapper" style="cursor:pointer;">
 			<div class="card-body p-2 p-md-2 p-lg-0 p-xl-4">
 				<div class="absolute left top bottom h-100 v-strock-2 bg-danger"></div>
 				<p class="text-muted mb-2 pl-0 pt-0 pl-lg-3 pt-lg-3 pl-xl-0 pt-xl-0">Ban Information</p>
@@ -127,8 +127,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 grid-margin stretch-card" style="cursor:pointer;">
-		<div class="card aligner-wrapper">
+	<div class="col-md-4 grid-margin stretch-card">
+		<div class="card aligner-wrapper" style="cursor:pointer;">
 			<div class="card-body p-2 p-md-2 p-lg-0 p-xl-4">
 				<div class="absolute left top bottom h-100 v-strock-2 bg-info"></div>
 				<p class="text-muted mb-2 pl-0 pt-0 pl-lg-3 pt-lg-3 pl-xl-0 pt-xl-0">Protest Information</p>
@@ -152,8 +152,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-4 grid-margin stretch-card" style="cursor:pointer;">
-		<div class="card aligner-wrapper">
+	<div class="col-md-4 grid-margin stretch-card">
+		<div class="card aligner-wrapper" style="cursor:pointer;">
 			<div class="card-body p-2 p-md-2 p-lg-0 p-xl-4">
 				<div class="absolute left top bottom h-100 v-strock-2 bg-dark"></div>
 				<p class="text-muted mb-2 pl-0 pt-0 pl-lg-3 pt-lg-3 pl-xl-0 pt-xl-0">Submission Information</p>

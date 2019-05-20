@@ -70,8 +70,8 @@
 							<tr>
 								<td>&nbsp;</td>
 								<td>
-									<input type="submit" onclick="xajax_CheckPassword(-{$user_aid}-, $('current').value);dispatch();" name="button" class="btn ok" id="button" value="Save" />
-									&nbsp; <input type="submit" onclick="history.go(-1)" name="button" class="btn cancel" id="button" value="Cancel" />	
+									<input type="submit" onclick="xajax_CheckPassword(-{$user_aid}-, $('current').value);dispatch();" name="button" class="btn ok btn-success" id="button" value="Save" />
+									&nbsp; <input type="submit" onclick="history.go(-1)" name="button" class="btn cancel btn-danger" id="button" value="Cancel" />	
 								</td>
 							</tr>
 						</table>
@@ -155,8 +155,8 @@
 							<tr>
 								<td>&nbsp;</td>
 								<td>
-									<input type="submit" onclick="-{if $srvpwset}-xajax_CheckSrvPassword(-{$user_aid}-, $('scurrent').value);-{/if}-srvdispatch();" name="button" class="btn ok" id="button" value="Save" />
-									&nbsp; <input type="submit" onclick="history.go(-1)" name="button" class="btn cancel" id="button" value="Cancel" />	
+									<input type="submit" onclick="-{if $srvpwset}-xajax_CheckSrvPassword(-{$user_aid}-, $('scurrent').value);-{/if}-srvdispatch();" name="button" class="btn ok btn-success" id="button" value="Save" />
+									&nbsp; <input type="submit" onclick="history.go(-1)" name="button" class="btn cancel btn-danger" id="button" value="Cancel" />	
 								</td>
 							</tr>
 						</table>
@@ -229,8 +229,8 @@
 							<tr>
 								<td>&nbsp;</td>
 								<td>
-									<input type="submit" onclick="checkmail();" name="button" class="btn ok" id="button" value="Save" />
-									&nbsp; <input type="submit" onclick="history.go(-1)" name="button" class="btn cancel" id="button" value="Cancel" />	
+									<input type="submit" onclick="checkmail();" name="button" class="btn ok btn-success" id="button" value="Save" />
+									&nbsp; <input type="submit" onclick="history.go(-1)" name="button" class="btn cancel btn-danger" id="button" value="Cancel" />	
 								</td>
 							</tr>
 						</table>

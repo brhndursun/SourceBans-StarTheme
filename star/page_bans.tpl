@@ -28,8 +28,8 @@
 							<input type="hidden" name="cid" id="cid" value="-1">
 							{/if}
 							<input type="hidden" name="page" id="page" value="{$page}">
-							{sb_button text="$commenttype Comment" onclick="ProcessComment();" class="ok" id="acom" submit=false}&nbsp;
-							{sb_button text="Back" onclick="history.go(-1)" class="cancel" id="aback"}
+							{sb_button text="$commenttype Comment" onclick="ProcessComment();" class="ok btn-success" id="acom" submit=false}&nbsp;
+							{sb_button text="Back" onclick="history.go(-1)" class="cancel btn-danger" id="aback"}
 						</td>
 					</tr>
 					{foreach from="$othercomments" item="com"}

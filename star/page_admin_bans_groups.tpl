@@ -47,9 +47,9 @@ This feature is disabled! Only follow links!
 						<tr>
 							<td>&nbsp;</td>
 							<td>
-								{sb_button text="Add Group Ban" onclick="ProcessGroupBan();" class="ok" id="agban" submit=false}
+								{sb_button text="Add Group Ban" onclick="ProcessGroupBan();" class="ok btn-success" id="agban" submit=false}
 								&nbsp;
-								{sb_button text="Back" onclick="history.go(-1)" class="cancel" id="aback"}
+								{sb_button text="Back" onclick="history.go(-1)" class="cancel btn-danger" id="aback"}
 							</td>
 						</tr>
 					</table>
@@ -95,7 +95,7 @@ This feature is disabled! Only follow links!
 									&nbsp;
 								</td>
 								<td>
-									<input type="button" class="btn ok" onclick="CheckGroupBan();" name="gban" id="gban" onmouseover="ButtonOver('gban');" onmouseout="ButtonOver('gban');" value="Add Group Ban">
+									<input type="button" class="btn ok btn-success" onclick="CheckGroupBan();" name="gban" id="gban" onmouseover="ButtonOver('gban');" onmouseout="ButtonOver('gban');" value="Add Group Ban">
 								</td>
 							</tr>
 						</table>

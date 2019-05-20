@@ -87,9 +87,9 @@
 							<tr>
 								<td>&nbsp;</td>
 								<td>      
-									{sb_button text="Save Changes" class="ok" id="editmod" submit=true}
+									{sb_button text="Save Changes" class="ok btn-success" id="editmod" submit=true}
 									&nbsp;
-									{sb_button text="Back" onclick="history.go(-1)" class="cancel" id="back" submit=false} 
+									{sb_button text="Back" onclick="history.go(-1)" class="cancel btn-danger" id="back" submit=false} 
 								</td>
 							</tr>
 						</table>

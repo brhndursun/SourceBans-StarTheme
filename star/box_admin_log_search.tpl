@@ -69,7 +69,7 @@
 			    </tr>
 			    <tr>
 					<td colspan="1">&nbsp;</td>
-			        <td colspan="2">{sb_button text="Search" onclick="search_log();" class="ok" id="searchbtn" submit=false}</td>
+			        <td colspan="2">{sb_button text="Search" onclick="search_log();" class="ok btn-success" id="searchbtn" submit=false}</td>
 				</tr>
 			</table>
 		</div>

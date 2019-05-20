@@ -187,7 +187,7 @@
 				<div class="col-sm-3">
 				</div>
 				<div class="col-sm-9">
-					{sb_button text="Search" onclick="search_blocks();" class="ok searchbtn" id="searchbtn" submit=false}
+					{sb_button text="Search" onclick="search_blocks();" class="ok searchbtn btn-success" id="searchbtn" submit=false}
 				</div>
 			</div>
 		</div>

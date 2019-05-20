@@ -350,9 +350,9 @@
 							<tr>
 								<td>&nbsp;</td>
 								<td>
-									{sb_button text="Save Changes" class="ok" id="asettings" submit=true}
+									{sb_button text="Save Changes" class="ok btn-success" id="asettings" submit=true}
 									&nbsp;
-									{sb_button text="Back" class="cancel" id="aback"}
+									{sb_button text="Back" class="cancel btn-danger" id="aback"}
 								</td>
 							</tr>
 						</table>
