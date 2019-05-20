@@ -33,17 +33,21 @@ if($userbank->HasAccess(ADMIN_OWNER | ADMIN_WEB_SETTINGS)){
 	}else{
 		?>
 		<script type="text/javascript">
-			function SyncInputs(val, name, pointer){
+			function SyncInputs(val, name, pointer) {
 				var _val = val;
-				if(val.length<5){
+				if(val.length > 7) {
+					_val = _val.substr(0,6);
+				}
+				if(val.length<5) {
 					_val = '#' + val[1] + val[1] + val[2] + val[2] + val[3] + val[3];
 				}
+
 				if(name.indexOf('i_') != -1){
 					document.getElementsByName(name.substr(2))[0].value =_val;
-					document.getElementsByName(name)[0].value =_val;
 				}else{
 					document.getElementsByName('i_'+name)[0].value =_val;
 				}
+					document.getElementsByName(name)[0].value =_val;
 				document.documentElement.style.setProperty(pointer,_val);
 			}
 			$('enable_darktheme').checked = <?php echo ($GLOBALS['config']['starTheme.darkTheme'] == '0' ? 'false' : 'true');?>;
