@@ -235,9 +235,6 @@ body .dropdown-menu *, body .dropdown-menu {
 	color:white;
 	background-color: unset;
 }
-.navbar.default-layout{
-	background:linear-gradient(120deg, var(--nav-grad-left) 250px, var(--nav-grad-right));
-}
 
 #dialog-placement{
   background:var(--main-bg);
@@ -254,6 +251,10 @@ a:hover{
 }
 
 <?php } ?>
+
+.navbar.default-layout{
+	background:linear-gradient(120deg, var(--nav-grad-left) 250px, var(--nav-grad-right));
+}
 .footer a,a{
 	color:var(--primary);
 }
