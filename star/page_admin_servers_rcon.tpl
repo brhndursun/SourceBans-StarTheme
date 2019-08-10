@@ -25,7 +25,7 @@ Access Denied!
 							</div>
 							<br />
 							<div class="input-group row col-12 col-xl-6">
-								<input type="text" class="form-control" id="cmd" placeholder="Command:">
+								<input type="text" name="command" class="form-control" id="cmd" placeholder="Command:">
 								<div class="input-group-append">
 								<input type="button" onclick="SendRcon();" id="rcon_btn" value="Send" class="btn btn-inverse-primary">
 							</div>	
